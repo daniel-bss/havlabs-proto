@@ -24,6 +24,7 @@ const (
 	HavlabsAuth_CreateUser_FullMethodName = "/pb.HavlabsAuth/CreateUser"
 	HavlabsAuth_UpdateUser_FullMethodName = "/pb.HavlabsAuth/UpdateUser"
 	HavlabsAuth_GetJWKS_FullMethodName    = "/pb.HavlabsAuth/GetJWKS"
+	HavlabsAuth_RenewToken_FullMethodName = "/pb.HavlabsAuth/RenewToken"
 )
 
 // HavlabsAuthClient is the client API for HavlabsAuth service.
@@ -34,6 +35,7 @@ type HavlabsAuthClient interface {
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 	UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UpdateUserResponse, error)
 	GetJWKS(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*JWKSResponse, error)
+	RenewToken(ctx context.Context, in *RenewTokenRequest, opts ...grpc.CallOption) (*JWKSResponse, error)
 }
 
 type havlabsAuthClient struct {
@@ -84,6 +86,16 @@ func (c *havlabsAuthClient) GetJWKS(ctx context.Context, in *emptypb.Empty, opts
 	return out, nil
 }
 
+func (c *havlabsAuthClient) RenewToken(ctx context.Context, in *RenewTokenRequest, opts ...grpc.CallOption) (*JWKSResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(JWKSResponse)
+	err := c.cc.Invoke(ctx, HavlabsAuth_RenewToken_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // HavlabsAuthServer is the server API for HavlabsAuth service.
 // All implementations must embed UnimplementedHavlabsAuthServer
 // for forward compatibility.
@@ -92,6 +104,7 @@ type HavlabsAuthServer interface {
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
 	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
 	GetJWKS(context.Context, *emptypb.Empty) (*JWKSResponse, error)
+	RenewToken(context.Context, *RenewTokenRequest) (*JWKSResponse, error)
 	mustEmbedUnimplementedHavlabsAuthServer()
 }
 
@@ -113,6 +126,9 @@ func (UnimplementedHavlabsAuthServer) UpdateUser(context.Context, *UpdateUserReq
 }
 func (UnimplementedHavlabsAuthServer) GetJWKS(context.Context, *emptypb.Empty) (*JWKSResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetJWKS not implemented")
+}
+func (UnimplementedHavlabsAuthServer) RenewToken(context.Context, *RenewTokenRequest) (*JWKSResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RenewToken not implemented")
 }
 func (UnimplementedHavlabsAuthServer) mustEmbedUnimplementedHavlabsAuthServer() {}
 func (UnimplementedHavlabsAuthServer) testEmbeddedByValue()                     {}
@@ -207,6 +223,24 @@ func _HavlabsAuth_GetJWKS_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _HavlabsAuth_RenewToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RenewTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HavlabsAuthServer).RenewToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HavlabsAuth_RenewToken_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HavlabsAuthServer).RenewToken(ctx, req.(*RenewTokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // HavlabsAuth_ServiceDesc is the grpc.ServiceDesc for HavlabsAuth service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -229,6 +263,10 @@ var HavlabsAuth_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetJWKS",
 			Handler:    _HavlabsAuth_GetJWKS_Handler,
+		},
+		{
+			MethodName: "RenewToken",
+			Handler:    _HavlabsAuth_RenewToken_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

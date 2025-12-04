@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package pb;
+
+import "buf/validate/validate.proto";
+
+option go_package = "github.com/daniel-bss/havlabs/internal/auth/pb";
+
+message RenewTokenRequest {
+    string refreshToken = 1 [ (buf.validate.field).string.min_len = 1 ];
+}

@@ -7,4 +7,7 @@ proto:
 	--descriptor_set_out=pb/pb.pb \
 	auth/*.proto
 
-.PHONY: proto 
+buf:
+	buf generate
+
+.PHONY: proto buf
