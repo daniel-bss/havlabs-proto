@@ -6,6 +6,7 @@ proto:
 	--go-grpc_out=pb --go-grpc_opt=paths=source_relative \
 	--descriptor_set_out=pb/pb.pb \
 	auth/*.proto
+	cp pb/pb.pb ../havlabs/internal/apigw/pb 
 
 buf:
 	buf generate

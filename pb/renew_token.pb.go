@@ -10,6 +10,7 @@ import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -66,13 +67,68 @@ func (x *RenewTokenRequest) GetRefreshToken() string {
 	return ""
 }
 
+type RenewTokenResponse struct {
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken          string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	AccessTokenExpiresAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=access_token_expires_at,json=accessTokenExpiresAt,proto3" json:"access_token_expires_at,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *RenewTokenResponse) Reset() {
+	*x = RenewTokenResponse{}
+	mi := &file_renew_token_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RenewTokenResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RenewTokenResponse) ProtoMessage() {}
+
+func (x *RenewTokenResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_renew_token_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RenewTokenResponse.ProtoReflect.Descriptor instead.
+func (*RenewTokenResponse) Descriptor() ([]byte, []int) {
+	return file_renew_token_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *RenewTokenResponse) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
+}
+
+func (x *RenewTokenResponse) GetAccessTokenExpiresAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.AccessTokenExpiresAt
+	}
+	return nil
+}
+
 var File_renew_token_proto protoreflect.FileDescriptor
 
 const file_renew_token_proto_rawDesc = "" +
 	"\n" +
-	"\x11renew_token.proto\x12\x02pb\x1a\x1bbuf/validate/validate.proto\"@\n" +
+	"\x11renew_token.proto\x12\x02pb\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"@\n" +
 	"\x11RenewTokenRequest\x12+\n" +
-	"\frefreshToken\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\frefreshTokenB0Z.github.com/daniel-bss/havlabs/internal/auth/pbb\x06proto3"
+	"\frefreshToken\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\frefreshToken\"\x8a\x01\n" +
+	"\x12RenewTokenResponse\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12Q\n" +
+	"\x17access_token_expires_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x14accessTokenExpiresAtB0Z.github.com/daniel-bss/havlabs/internal/auth/pbb\x06proto3"
 
 var (
 	file_renew_token_proto_rawDescOnce sync.Once
@@ -86,16 +142,19 @@ func file_renew_token_proto_rawDescGZIP() []byte {
 	return file_renew_token_proto_rawDescData
 }
 
-var file_renew_token_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_renew_token_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_renew_token_proto_goTypes = []any{
-	(*RenewTokenRequest)(nil), // 0: pb.RenewTokenRequest
+	(*RenewTokenRequest)(nil),     // 0: pb.RenewTokenRequest
+	(*RenewTokenResponse)(nil),    // 1: pb.RenewTokenResponse
+	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
 }
 var file_renew_token_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	2, // 0: pb.RenewTokenResponse.access_token_expires_at:type_name -> google.protobuf.Timestamp
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_renew_token_proto_init() }
@@ -109,7 +168,7 @@ func file_renew_token_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_renew_token_proto_rawDesc), len(file_renew_token_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
