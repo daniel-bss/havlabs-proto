@@ -41,7 +41,7 @@ service HavlabsAuth {
         };
     }
 
-    rpc RenewToken(RenewTokenRequest) returns (JWKSResponse) {
+    rpc RenewToken(RenewTokenRequest) returns (RenewTokenResponse) {
         option (google.api.http) = {
             post: "/renew-token"
             body: "*"
