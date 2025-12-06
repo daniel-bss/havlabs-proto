@@ -10,4 +10,7 @@ proto:
 buf:
 	buf generate
 
-.PHONY: proto buf
+copypb:
+	cp pb/pb.pb ../havlabs/internal/apigw/pb 
+
+.PHONY: proto buf copypb

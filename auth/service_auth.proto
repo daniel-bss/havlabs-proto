@@ -30,7 +30,7 @@ service HavlabsAuth {
 
     rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse) {
         option (google.api.http) = {
-            post: "/hehe"
+            post: "/users/update"
             body: "*"
         };
     }
