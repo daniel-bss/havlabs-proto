@@ -35,7 +35,7 @@ type HavlabsAuthClient interface {
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 	UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UpdateUserResponse, error)
 	GetJWKS(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*JWKSResponse, error)
-	RenewToken(ctx context.Context, in *RenewTokenRequest, opts ...grpc.CallOption) (*JWKSResponse, error)
+	RenewToken(ctx context.Context, in *RenewTokenRequest, opts ...grpc.CallOption) (*RenewTokenResponse, error)
 }
 
 type havlabsAuthClient struct {
@@ -86,9 +86,9 @@ func (c *havlabsAuthClient) GetJWKS(ctx context.Context, in *emptypb.Empty, opts
 	return out, nil
 }
 
-func (c *havlabsAuthClient) RenewToken(ctx context.Context, in *RenewTokenRequest, opts ...grpc.CallOption) (*JWKSResponse, error) {
+func (c *havlabsAuthClient) RenewToken(ctx context.Context, in *RenewTokenRequest, opts ...grpc.CallOption) (*RenewTokenResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(JWKSResponse)
+	out := new(RenewTokenResponse)
 	err := c.cc.Invoke(ctx, HavlabsAuth_RenewToken_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -104,7 +104,7 @@ type HavlabsAuthServer interface {
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
 	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
 	GetJWKS(context.Context, *emptypb.Empty) (*JWKSResponse, error)
-	RenewToken(context.Context, *RenewTokenRequest) (*JWKSResponse, error)
+	RenewToken(context.Context, *RenewTokenRequest) (*RenewTokenResponse, error)
 	mustEmbedUnimplementedHavlabsAuthServer()
 }
 
@@ -127,7 +127,7 @@ func (UnimplementedHavlabsAuthServer) UpdateUser(context.Context, *UpdateUserReq
 func (UnimplementedHavlabsAuthServer) GetJWKS(context.Context, *emptypb.Empty) (*JWKSResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetJWKS not implemented")
 }
-func (UnimplementedHavlabsAuthServer) RenewToken(context.Context, *RenewTokenRequest) (*JWKSResponse, error) {
+func (UnimplementedHavlabsAuthServer) RenewToken(context.Context, *RenewTokenRequest) (*RenewTokenResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method RenewToken not implemented")
 }
 func (UnimplementedHavlabsAuthServer) mustEmbedUnimplementedHavlabsAuthServer() {}
