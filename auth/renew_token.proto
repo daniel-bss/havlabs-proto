@@ -8,7 +8,7 @@ import "google/protobuf/timestamp.proto";
 option go_package = "github.com/daniel-bss/havlabs/internal/auth/pb";
 
 message RenewTokenRequest {
-    string refreshToken = 1 [ (buf.validate.field).string.min_len = 1 ];
+    string refresh_token = 1 [ (buf.validate.field).string.min_len = 1 ];
 }
 
 message RenewTokenResponse {

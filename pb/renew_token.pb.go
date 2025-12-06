@@ -25,7 +25,7 @@ const (
 
 type RenewTokenRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	RefreshToken  string                 `protobuf:"bytes,1,opt,name=refreshToken,proto3" json:"refreshToken,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,1,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -123,9 +123,9 @@ var File_renew_token_proto protoreflect.FileDescriptor
 
 const file_renew_token_proto_rawDesc = "" +
 	"\n" +
-	"\x11renew_token.proto\x12\x02pb\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"@\n" +
-	"\x11RenewTokenRequest\x12+\n" +
-	"\frefreshToken\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\frefreshToken\"\x8a\x01\n" +
+	"\x11renew_token.proto\x12\x02pb\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"A\n" +
+	"\x11RenewTokenRequest\x12,\n" +
+	"\rrefresh_token\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\frefreshToken\"\x8a\x01\n" +
 	"\x12RenewTokenResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12Q\n" +
 	"\x17access_token_expires_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x14accessTokenExpiresAtB0Z.github.com/daniel-bss/havlabs/internal/auth/pbb\x06proto3"
