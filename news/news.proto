@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/daniel-bss/havlabs/internal/news/pb";
+
+message NewsRequest {}
+
+message NewsResponse {
+    string title = 1;
+    string excerpt = 2;
+    string image_url = 3;
+    google.protobuf.Timestamp published_at = 4;
+}
