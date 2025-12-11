@@ -36,7 +36,7 @@ const file_service_auth_proto_rawDesc = "" +
 	"UpdateUser\x12\x15.pb.UpdateUserRequest\x1a\x16.pb.UpdateUserResponse\"\x18\x82\xd3\xe4\x93\x02\x12:\x01*\"\r/users/update\x12S\n" +
 	"\aGetJWKS\x12\x16.google.protobuf.Empty\x1a\x10.pb.JWKSResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/.well-known/jwks.json\x12T\n" +
 	"\n" +
-	"RenewToken\x12\x15.pb.RenewTokenRequest\x1a\x16.pb.RenewTokenResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/renew-tokenB0Z.github.com/daniel-bss/havlabs-proto/auth/pbb\x06proto3"
+	"RenewToken\x12\x15.pb.RenewTokenRequest\x1a\x16.pb.RenewTokenResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/renew-tokenB-Z+github.com/daniel-bss/havlabs-proto/auth/pbb\x06proto3"
 
 var file_service_auth_proto_goTypes = []any{
 	(*LoginRequest)(nil),       // 0: pb.LoginRequest

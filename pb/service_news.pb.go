@@ -26,9 +26,9 @@ var File_service_news_proto protoreflect.FileDescriptor
 const file_service_news_proto_rawDesc = "" +
 	"\n" +
 	"\x12service_news.proto\x12\x02pb\x1a\x1cgoogle/api/annotations.proto\x1a\n" +
-	"news.proto2N\n" +
-	"\vHavlabsNews\x12?\n" +
-	"\aGetNews\x12\x0f.pb.NewsRequest\x1a\x10.pb.NewsResponse\"\x11\x82\xd3\xe4\x93\x02\v:\x01*\"\x06/loginB0Z.github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
+	"news.proto2J\n" +
+	"\vHavlabsNews\x12;\n" +
+	"\aGetNews\x12\x0f.pb.NewsRequest\x1a\x10.pb.NewsResponse\"\r\x82\xd3\xe4\x93\x02\a\x12\x05/newsB-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
 
 var file_service_news_proto_goTypes = []any{
 	(*NewsRequest)(nil),  // 0: pb.NewsRequest
