@@ -4,7 +4,7 @@ package pb;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/daniel-bss/havlabs/internal/news/pb";
+option go_package = "github.com/daniel-bss/havlabs-proto/news/pb";
 
 message NewsRequest {}
 

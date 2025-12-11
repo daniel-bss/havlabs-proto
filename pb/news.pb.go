@@ -137,7 +137,7 @@ const file_news_proto_rawDesc = "" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
 	"\aexcerpt\x18\x02 \x01(\tR\aexcerpt\x12\x1b\n" +
 	"\timage_url\x18\x03 \x01(\tR\bimageUrl\x12=\n" +
-	"\fpublished_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vpublishedAtB0Z.github.com/daniel-bss/havlabs/internal/news/pbb\x06proto3"
+	"\fpublished_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vpublishedAtB0Z.github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
 
 var (
 	file_news_proto_rawDescOnce sync.Once

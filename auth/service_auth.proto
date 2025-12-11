@@ -10,7 +10,7 @@ import "rpc_login.proto";
 import "renew_token.proto";
 import "jwks.proto";
 
-option go_package = "github.com/daniel-bss/havlabs/internal/auth/pb";
+option go_package = "github.com/daniel-bss/havlabs-proto/auth/pb";
 
 service HavlabsAuth {
 

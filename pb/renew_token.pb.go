@@ -128,7 +128,7 @@ const file_renew_token_proto_rawDesc = "" +
 	"\rrefresh_token\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\frefreshToken\"\x8a\x01\n" +
 	"\x12RenewTokenResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12Q\n" +
-	"\x17access_token_expires_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x14accessTokenExpiresAtB0Z.github.com/daniel-bss/havlabs/internal/auth/pbb\x06proto3"
+	"\x17access_token_expires_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x14accessTokenExpiresAtB0Z.github.com/daniel-bss/havlabs-proto/auth/pbb\x06proto3"
 
 var (
 	file_renew_token_proto_rawDescOnce sync.Once

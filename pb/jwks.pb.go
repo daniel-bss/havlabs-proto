@@ -163,7 +163,7 @@ const file_jwks_proto_rawDesc = "" +
 	"\x01n\x18\x05 \x01(\tR\x01n\x12\f\n" +
 	"\x01e\x18\x06 \x01(\tR\x01e\"+\n" +
 	"\fJWKSResponse\x12\x1b\n" +
-	"\x04keys\x18\x01 \x03(\v2\a.pb.JWKR\x04keysB0Z.github.com/daniel-bss/havlabs/internal/auth/pbb\x06proto3"
+	"\x04keys\x18\x01 \x03(\v2\a.pb.JWKR\x04keysB0Z.github.com/daniel-bss/havlabs-proto/auth/pbb\x06proto3"
 
 var (
 	file_jwks_proto_rawDescOnce sync.Once

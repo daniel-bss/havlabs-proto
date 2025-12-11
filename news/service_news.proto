@@ -5,7 +5,7 @@ package pb;
 import "google/api/annotations.proto";
 import "news.proto";
 
-option go_package = "github.com/daniel-bss/havlabs/internal/news/pb";
+option go_package = "github.com/daniel-bss/havlabs-proto/news/pb";
 
 service HavlabsNews {
 
