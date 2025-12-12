@@ -22,26 +22,27 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type NewsRequest struct {
+type OneNewsIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *NewsRequest) Reset() {
-	*x = NewsRequest{}
+func (x *OneNewsIdRequest) Reset() {
+	*x = OneNewsIdRequest{}
 	mi := &file_news_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *NewsRequest) String() string {
+func (x *OneNewsIdRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NewsRequest) ProtoMessage() {}
+func (*OneNewsIdRequest) ProtoMessage() {}
 
-func (x *NewsRequest) ProtoReflect() protoreflect.Message {
+func (x *OneNewsIdRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_news_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -53,12 +54,19 @@ func (x *NewsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NewsRequest.ProtoReflect.Descriptor instead.
-func (*NewsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use OneNewsIdRequest.ProtoReflect.Descriptor instead.
+func (*OneNewsIdRequest) Descriptor() ([]byte, []int) {
 	return file_news_proto_rawDescGZIP(), []int{0}
 }
 
-type NewsResponse struct {
+func (x *OneNewsIdRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetOneNewsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
 	Excerpt       string                 `protobuf:"bytes,2,opt,name=excerpt,proto3" json:"excerpt,omitempty"`
@@ -68,20 +76,20 @@ type NewsResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *NewsResponse) Reset() {
-	*x = NewsResponse{}
+func (x *GetOneNewsResponse) Reset() {
+	*x = GetOneNewsResponse{}
 	mi := &file_news_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *NewsResponse) String() string {
+func (x *GetOneNewsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NewsResponse) ProtoMessage() {}
+func (*GetOneNewsResponse) ProtoMessage() {}
 
-func (x *NewsResponse) ProtoReflect() protoreflect.Message {
+func (x *GetOneNewsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_news_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -93,37 +101,125 @@ func (x *NewsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NewsResponse.ProtoReflect.Descriptor instead.
-func (*NewsResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetOneNewsResponse.ProtoReflect.Descriptor instead.
+func (*GetOneNewsResponse) Descriptor() ([]byte, []int) {
 	return file_news_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *NewsResponse) GetTitle() string {
+func (x *GetOneNewsResponse) GetTitle() string {
 	if x != nil {
 		return x.Title
 	}
 	return ""
 }
 
-func (x *NewsResponse) GetExcerpt() string {
+func (x *GetOneNewsResponse) GetExcerpt() string {
 	if x != nil {
 		return x.Excerpt
 	}
 	return ""
 }
 
-func (x *NewsResponse) GetImageUrl() string {
+func (x *GetOneNewsResponse) GetImageUrl() string {
 	if x != nil {
 		return x.ImageUrl
 	}
 	return ""
 }
 
-func (x *NewsResponse) GetPublishedAt() *timestamppb.Timestamp {
+func (x *GetOneNewsResponse) GetPublishedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.PublishedAt
 	}
 	return nil
+}
+
+type GetAllNewsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	News          []*GetOneNewsResponse  `protobuf:"bytes,1,rep,name=news,proto3" json:"news,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllNewsResponse) Reset() {
+	*x = GetAllNewsResponse{}
+	mi := &file_news_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllNewsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllNewsResponse) ProtoMessage() {}
+
+func (x *GetAllNewsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_news_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllNewsResponse.ProtoReflect.Descriptor instead.
+func (*GetAllNewsResponse) Descriptor() ([]byte, []int) {
+	return file_news_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetAllNewsResponse) GetNews() []*GetOneNewsResponse {
+	if x != nil {
+		return x.News
+	}
+	return nil
+}
+
+type NewsIdResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NewsIdResponse) Reset() {
+	*x = NewsIdResponse{}
+	mi := &file_news_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NewsIdResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NewsIdResponse) ProtoMessage() {}
+
+func (x *NewsIdResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_news_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NewsIdResponse.ProtoReflect.Descriptor instead.
+func (*NewsIdResponse) Descriptor() ([]byte, []int) {
+	return file_news_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *NewsIdResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 var File_news_proto protoreflect.FileDescriptor
@@ -131,13 +227,18 @@ var File_news_proto protoreflect.FileDescriptor
 const file_news_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"news.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\"\r\n" +
-	"\vNewsRequest\"\x9a\x01\n" +
-	"\fNewsResponse\x12\x14\n" +
+	"news.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\"\"\n" +
+	"\x10OneNewsIdRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\xa0\x01\n" +
+	"\x12GetOneNewsResponse\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
 	"\aexcerpt\x18\x02 \x01(\tR\aexcerpt\x12\x1b\n" +
 	"\timage_url\x18\x03 \x01(\tR\bimageUrl\x12=\n" +
-	"\fpublished_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vpublishedAtB-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
+	"\fpublished_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vpublishedAt\"@\n" +
+	"\x12GetAllNewsResponse\x12*\n" +
+	"\x04news\x18\x01 \x03(\v2\x16.pb.GetOneNewsResponseR\x04news\" \n" +
+	"\x0eNewsIdResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02idB-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
 
 var (
 	file_news_proto_rawDescOnce sync.Once
@@ -151,19 +252,22 @@ func file_news_proto_rawDescGZIP() []byte {
 	return file_news_proto_rawDescData
 }
 
-var file_news_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_news_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_news_proto_goTypes = []any{
-	(*NewsRequest)(nil),           // 0: pb.NewsRequest
-	(*NewsResponse)(nil),          // 1: pb.NewsResponse
-	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
+	(*OneNewsIdRequest)(nil),      // 0: pb.OneNewsIdRequest
+	(*GetOneNewsResponse)(nil),    // 1: pb.GetOneNewsResponse
+	(*GetAllNewsResponse)(nil),    // 2: pb.GetAllNewsResponse
+	(*NewsIdResponse)(nil),        // 3: pb.NewsIdResponse
+	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
 }
 var file_news_proto_depIdxs = []int32{
-	2, // 0: pb.NewsResponse.published_at:type_name -> google.protobuf.Timestamp
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	4, // 0: pb.GetOneNewsResponse.published_at:type_name -> google.protobuf.Timestamp
+	1, // 1: pb.GetAllNewsResponse.news:type_name -> pb.GetOneNewsResponse
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_news_proto_init() }
@@ -177,7 +281,7 @@ func file_news_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_news_proto_rawDesc), len(file_news_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

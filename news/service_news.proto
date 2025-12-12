@@ -3,15 +3,45 @@ syntax = "proto3";
 package pb;
 
 import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
 import "news.proto";
 
 option go_package = "github.com/daniel-bss/havlabs-proto/news/pb";
 
 service HavlabsNews {
 
-    rpc GetNews(NewsRequest) returns (NewsResponse) {
+    rpc GetAllNews(google.protobuf.Empty) returns (GetAllNewsResponse) {
         option (google.api.http) = {
             get: "/news"
+        };
+    }
+
+    rpc GetOneNews(OneNewsIdRequest) returns (GetOneNewsResponse) {
+        option (google.api.http) = {
+            get: "/news"
+            body: "*"
+        };
+    }
+
+
+    rpc CreateNews(OneNewsIdRequest) returns (NewsIdResponse) {
+        option (google.api.http) = {
+            post: "/news"
+            body: "*"
+        };
+    }
+
+    rpc UpdateNews(OneNewsIdRequest) returns (NewsIdResponse) {
+        option (google.api.http) = {
+            put: "/news"
+            body: "*"
+        };
+    }
+
+    rpc DeleteNews(OneNewsIdRequest) returns (NewsIdResponse) {
+        option (google.api.http) = {
+            delete: "/news"
+            body: "*"
         };
     }
 

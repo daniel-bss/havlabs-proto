@@ -10,6 +10,7 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -25,20 +26,44 @@ var File_service_news_proto protoreflect.FileDescriptor
 
 const file_service_news_proto_rawDesc = "" +
 	"\n" +
-	"\x12service_news.proto\x12\x02pb\x1a\x1cgoogle/api/annotations.proto\x1a\n" +
-	"news.proto2J\n" +
-	"\vHavlabsNews\x12;\n" +
-	"\aGetNews\x12\x0f.pb.NewsRequest\x1a\x10.pb.NewsResponse\"\r\x82\xd3\xe4\x93\x02\a\x12\x05/newsB-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
+	"\x12service_news.proto\x12\x02pb\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\n" +
+	"news.proto2\x86\x03\n" +
+	"\vHavlabsNews\x12K\n" +
+	"\n" +
+	"GetAllNews\x12\x16.google.protobuf.Empty\x1a\x16.pb.GetAllNewsResponse\"\r\x82\xd3\xe4\x93\x02\a\x12\x05/news\x12L\n" +
+	"\n" +
+	"GetOneNews\x12\x14.pb.OneNewsIdRequest\x1a\x16.pb.GetOneNewsResponse\"\x10\x82\xd3\xe4\x93\x02\n" +
+	":\x01*\x12\x05/news\x12H\n" +
+	"\n" +
+	"CreateNews\x12\x14.pb.OneNewsIdRequest\x1a\x12.pb.NewsIdResponse\"\x10\x82\xd3\xe4\x93\x02\n" +
+	":\x01*\"\x05/news\x12H\n" +
+	"\n" +
+	"UpdateNews\x12\x14.pb.OneNewsIdRequest\x1a\x12.pb.NewsIdResponse\"\x10\x82\xd3\xe4\x93\x02\n" +
+	":\x01*\x1a\x05/news\x12H\n" +
+	"\n" +
+	"DeleteNews\x12\x14.pb.OneNewsIdRequest\x1a\x12.pb.NewsIdResponse\"\x10\x82\xd3\xe4\x93\x02\n" +
+	":\x01**\x05/newsB-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
 
 var file_service_news_proto_goTypes = []any{
-	(*NewsRequest)(nil),  // 0: pb.NewsRequest
-	(*NewsResponse)(nil), // 1: pb.NewsResponse
+	(*emptypb.Empty)(nil),      // 0: google.protobuf.Empty
+	(*OneNewsIdRequest)(nil),   // 1: pb.OneNewsIdRequest
+	(*GetAllNewsResponse)(nil), // 2: pb.GetAllNewsResponse
+	(*GetOneNewsResponse)(nil), // 3: pb.GetOneNewsResponse
+	(*NewsIdResponse)(nil),     // 4: pb.NewsIdResponse
 }
 var file_service_news_proto_depIdxs = []int32{
-	0, // 0: pb.HavlabsNews.GetNews:input_type -> pb.NewsRequest
-	1, // 1: pb.HavlabsNews.GetNews:output_type -> pb.NewsResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	0, // 0: pb.HavlabsNews.GetAllNews:input_type -> google.protobuf.Empty
+	1, // 1: pb.HavlabsNews.GetOneNews:input_type -> pb.OneNewsIdRequest
+	1, // 2: pb.HavlabsNews.CreateNews:input_type -> pb.OneNewsIdRequest
+	1, // 3: pb.HavlabsNews.UpdateNews:input_type -> pb.OneNewsIdRequest
+	1, // 4: pb.HavlabsNews.DeleteNews:input_type -> pb.OneNewsIdRequest
+	2, // 5: pb.HavlabsNews.GetAllNews:output_type -> pb.GetAllNewsResponse
+	3, // 6: pb.HavlabsNews.GetOneNews:output_type -> pb.GetOneNewsResponse
+	4, // 7: pb.HavlabsNews.CreateNews:output_type -> pb.NewsIdResponse
+	4, // 8: pb.HavlabsNews.UpdateNews:output_type -> pb.NewsIdResponse
+	4, // 9: pb.HavlabsNews.DeleteNews:output_type -> pb.NewsIdResponse
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name

@@ -9,10 +9,4 @@ proto:
 	auth/*.proto news/*.proto 
 	cp pb/pb.pb ../havlabs/internal/apigw/pb 
 
-buf:
-	buf generate
-
-copypb:
-	cp pb/pb.pb ../havlabs/internal/apigw/pb 
-
-.PHONY: proto buf copypb
+.PHONY: proto 
