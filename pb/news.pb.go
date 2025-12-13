@@ -7,6 +7,7 @@
 package pb
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -347,26 +348,26 @@ var File_news_proto protoreflect.FileDescriptor
 const file_news_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"news.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\"'\n" +
-	"\x15GetOneNewsByIdRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"n\n" +
-	"\x11CreateNewsRequest\x12)\n" +
-	"\x10creator_username\x18\x01 \x01(\tR\x0fcreatorUsername\x12\x14\n" +
-	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
-	"\acontent\x18\x03 \x01(\tR\acontent\"r\n" +
-	"\x15UpdateNewsByIdRequest\x12)\n" +
-	"\x10creator_username\x18\x01 \x01(\tR\x0fcreatorUsername\x12\x14\n" +
-	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
-	"\acontent\x18\x03 \x01(\tR\acontent\"\xa0\x01\n" +
-	"\x12GetOneNewsResponse\x12\x14\n" +
-	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
-	"\aexcerpt\x18\x02 \x01(\tR\aexcerpt\x12\x1b\n" +
-	"\timage_url\x18\x03 \x01(\tR\bimageUrl\x12=\n" +
-	"\fpublished_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vpublishedAt\"@\n" +
-	"\x12GetAllNewsResponse\x12*\n" +
-	"\x04news\x18\x01 \x03(\v2\x16.pb.GetOneNewsResponseR\x04news\" \n" +
-	"\x0eNewsIdResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02idB-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
+	"news.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bbuf/validate/validate.proto\"0\n" +
+	"\x15GetOneNewsByIdRequest\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"\x89\x01\n" +
+	"\x11CreateNewsRequest\x122\n" +
+	"\x10creator_username\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x0fcreatorUsername\x12\x1d\n" +
+	"\x05title\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05title\x12!\n" +
+	"\acontent\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\acontent\"\x8d\x01\n" +
+	"\x15UpdateNewsByIdRequest\x122\n" +
+	"\x10creator_username\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x0fcreatorUsername\x12\x1d\n" +
+	"\x05title\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05title\x12!\n" +
+	"\acontent\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\acontent\"\xc4\x01\n" +
+	"\x12GetOneNewsResponse\x12\x1d\n" +
+	"\x05title\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05title\x12!\n" +
+	"\aexcerpt\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\aexcerpt\x12$\n" +
+	"\timage_url\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bimageUrl\x12F\n" +
+	"\fpublished_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampB\a\xbaH\x04r\x02\x10\x01R\vpublishedAt\"I\n" +
+	"\x12GetAllNewsResponse\x123\n" +
+	"\x04news\x18\x01 \x03(\v2\x16.pb.GetOneNewsResponseB\a\xbaH\x04r\x02\x10\x01R\x04news\")\n" +
+	"\x0eNewsIdResponse\x12\x17\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02idB-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
 
 var (
 	file_news_proto_rawDescOnce sync.Once
