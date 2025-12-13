@@ -18,7 +18,7 @@ service HavlabsNews {
 
     rpc GetOneNews(GetOneNewsByIdRequest) returns (GetOneNewsResponse) {
         option (google.api.http) = {
-            get: "/news"
+            get: "/news/{id}"
             body: "*"
         };
     }
