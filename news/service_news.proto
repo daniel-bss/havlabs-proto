@@ -16,7 +16,7 @@ service HavlabsNews {
         };
     }
 
-    rpc GetOneNews(OneNewsIdRequest) returns (GetOneNewsResponse) {
+    rpc GetOneNews(GetOneNewsByIdRequest) returns (GetOneNewsResponse) {
         option (google.api.http) = {
             get: "/news"
             body: "*"
@@ -24,21 +24,21 @@ service HavlabsNews {
     }
 
 
-    rpc CreateNews(OneNewsIdRequest) returns (NewsIdResponse) {
+    rpc CreateNews(CreateNewsRequest) returns (NewsIdResponse) {
         option (google.api.http) = {
             post: "/news"
             body: "*"
         };
     }
 
-    rpc UpdateNews(OneNewsIdRequest) returns (NewsIdResponse) {
+    rpc UpdateNews(UpdateNewsByIdRequest) returns (NewsIdResponse) {
         option (google.api.http) = {
             put: "/news"
             body: "*"
         };
     }
 
-    rpc DeleteNews(OneNewsIdRequest) returns (NewsIdResponse) {
+    rpc DeleteNews(GetOneNewsByIdRequest) returns (NewsIdResponse) {
         option (google.api.http) = {
             delete: "/news"
             body: "*"

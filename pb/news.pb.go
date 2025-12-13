@@ -22,27 +22,27 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type OneNewsIdRequest struct {
+type GetOneNewsByIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *OneNewsIdRequest) Reset() {
-	*x = OneNewsIdRequest{}
+func (x *GetOneNewsByIdRequest) Reset() {
+	*x = GetOneNewsByIdRequest{}
 	mi := &file_news_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *OneNewsIdRequest) String() string {
+func (x *GetOneNewsByIdRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*OneNewsIdRequest) ProtoMessage() {}
+func (*GetOneNewsByIdRequest) ProtoMessage() {}
 
-func (x *OneNewsIdRequest) ProtoReflect() protoreflect.Message {
+func (x *GetOneNewsByIdRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_news_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -54,14 +54,134 @@ func (x *OneNewsIdRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use OneNewsIdRequest.ProtoReflect.Descriptor instead.
-func (*OneNewsIdRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetOneNewsByIdRequest.ProtoReflect.Descriptor instead.
+func (*GetOneNewsByIdRequest) Descriptor() ([]byte, []int) {
 	return file_news_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *OneNewsIdRequest) GetId() string {
+func (x *GetOneNewsByIdRequest) GetId() string {
 	if x != nil {
 		return x.Id
+	}
+	return ""
+}
+
+type CreateNewsRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	CreatorUsername string                 `protobuf:"bytes,1,opt,name=creator_username,json=creatorUsername,proto3" json:"creator_username,omitempty"`
+	Title           string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Content         string                 `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *CreateNewsRequest) Reset() {
+	*x = CreateNewsRequest{}
+	mi := &file_news_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateNewsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateNewsRequest) ProtoMessage() {}
+
+func (x *CreateNewsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_news_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateNewsRequest.ProtoReflect.Descriptor instead.
+func (*CreateNewsRequest) Descriptor() ([]byte, []int) {
+	return file_news_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CreateNewsRequest) GetCreatorUsername() string {
+	if x != nil {
+		return x.CreatorUsername
+	}
+	return ""
+}
+
+func (x *CreateNewsRequest) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *CreateNewsRequest) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
+type UpdateNewsByIdRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	CreatorUsername string                 `protobuf:"bytes,1,opt,name=creator_username,json=creatorUsername,proto3" json:"creator_username,omitempty"`
+	Title           string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Content         string                 `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *UpdateNewsByIdRequest) Reset() {
+	*x = UpdateNewsByIdRequest{}
+	mi := &file_news_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateNewsByIdRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateNewsByIdRequest) ProtoMessage() {}
+
+func (x *UpdateNewsByIdRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_news_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateNewsByIdRequest.ProtoReflect.Descriptor instead.
+func (*UpdateNewsByIdRequest) Descriptor() ([]byte, []int) {
+	return file_news_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *UpdateNewsByIdRequest) GetCreatorUsername() string {
+	if x != nil {
+		return x.CreatorUsername
+	}
+	return ""
+}
+
+func (x *UpdateNewsByIdRequest) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *UpdateNewsByIdRequest) GetContent() string {
+	if x != nil {
+		return x.Content
 	}
 	return ""
 }
@@ -78,7 +198,7 @@ type GetOneNewsResponse struct {
 
 func (x *GetOneNewsResponse) Reset() {
 	*x = GetOneNewsResponse{}
-	mi := &file_news_proto_msgTypes[1]
+	mi := &file_news_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -90,7 +210,7 @@ func (x *GetOneNewsResponse) String() string {
 func (*GetOneNewsResponse) ProtoMessage() {}
 
 func (x *GetOneNewsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_news_proto_msgTypes[1]
+	mi := &file_news_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -103,7 +223,7 @@ func (x *GetOneNewsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOneNewsResponse.ProtoReflect.Descriptor instead.
 func (*GetOneNewsResponse) Descriptor() ([]byte, []int) {
-	return file_news_proto_rawDescGZIP(), []int{1}
+	return file_news_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetOneNewsResponse) GetTitle() string {
@@ -143,7 +263,7 @@ type GetAllNewsResponse struct {
 
 func (x *GetAllNewsResponse) Reset() {
 	*x = GetAllNewsResponse{}
-	mi := &file_news_proto_msgTypes[2]
+	mi := &file_news_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -155,7 +275,7 @@ func (x *GetAllNewsResponse) String() string {
 func (*GetAllNewsResponse) ProtoMessage() {}
 
 func (x *GetAllNewsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_news_proto_msgTypes[2]
+	mi := &file_news_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -168,7 +288,7 @@ func (x *GetAllNewsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllNewsResponse.ProtoReflect.Descriptor instead.
 func (*GetAllNewsResponse) Descriptor() ([]byte, []int) {
-	return file_news_proto_rawDescGZIP(), []int{2}
+	return file_news_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetAllNewsResponse) GetNews() []*GetOneNewsResponse {
@@ -187,7 +307,7 @@ type NewsIdResponse struct {
 
 func (x *NewsIdResponse) Reset() {
 	*x = NewsIdResponse{}
-	mi := &file_news_proto_msgTypes[3]
+	mi := &file_news_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -199,7 +319,7 @@ func (x *NewsIdResponse) String() string {
 func (*NewsIdResponse) ProtoMessage() {}
 
 func (x *NewsIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_news_proto_msgTypes[3]
+	mi := &file_news_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -212,7 +332,7 @@ func (x *NewsIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NewsIdResponse.ProtoReflect.Descriptor instead.
 func (*NewsIdResponse) Descriptor() ([]byte, []int) {
-	return file_news_proto_rawDescGZIP(), []int{3}
+	return file_news_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *NewsIdResponse) GetId() string {
@@ -227,9 +347,17 @@ var File_news_proto protoreflect.FileDescriptor
 const file_news_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"news.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\"\"\n" +
-	"\x10OneNewsIdRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"\xa0\x01\n" +
+	"news.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\"'\n" +
+	"\x15GetOneNewsByIdRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"n\n" +
+	"\x11CreateNewsRequest\x12)\n" +
+	"\x10creator_username\x18\x01 \x01(\tR\x0fcreatorUsername\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
+	"\acontent\x18\x03 \x01(\tR\acontent\"r\n" +
+	"\x15UpdateNewsByIdRequest\x12)\n" +
+	"\x10creator_username\x18\x01 \x01(\tR\x0fcreatorUsername\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
+	"\acontent\x18\x03 \x01(\tR\acontent\"\xa0\x01\n" +
 	"\x12GetOneNewsResponse\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
 	"\aexcerpt\x18\x02 \x01(\tR\aexcerpt\x12\x1b\n" +
@@ -252,17 +380,19 @@ func file_news_proto_rawDescGZIP() []byte {
 	return file_news_proto_rawDescData
 }
 
-var file_news_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_news_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_news_proto_goTypes = []any{
-	(*OneNewsIdRequest)(nil),      // 0: pb.OneNewsIdRequest
-	(*GetOneNewsResponse)(nil),    // 1: pb.GetOneNewsResponse
-	(*GetAllNewsResponse)(nil),    // 2: pb.GetAllNewsResponse
-	(*NewsIdResponse)(nil),        // 3: pb.NewsIdResponse
-	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
+	(*GetOneNewsByIdRequest)(nil), // 0: pb.GetOneNewsByIdRequest
+	(*CreateNewsRequest)(nil),     // 1: pb.CreateNewsRequest
+	(*UpdateNewsByIdRequest)(nil), // 2: pb.UpdateNewsByIdRequest
+	(*GetOneNewsResponse)(nil),    // 3: pb.GetOneNewsResponse
+	(*GetAllNewsResponse)(nil),    // 4: pb.GetAllNewsResponse
+	(*NewsIdResponse)(nil),        // 5: pb.NewsIdResponse
+	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
 }
 var file_news_proto_depIdxs = []int32{
-	4, // 0: pb.GetOneNewsResponse.published_at:type_name -> google.protobuf.Timestamp
-	1, // 1: pb.GetAllNewsResponse.news:type_name -> pb.GetOneNewsResponse
+	6, // 0: pb.GetOneNewsResponse.published_at:type_name -> google.protobuf.Timestamp
+	3, // 1: pb.GetAllNewsResponse.news:type_name -> pb.GetOneNewsResponse
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -281,7 +411,7 @@ func file_news_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_news_proto_rawDesc), len(file_news_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

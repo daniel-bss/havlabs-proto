@@ -6,9 +6,25 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/daniel-bss/havlabs-proto/news/pb";
 
-message OneNewsIdRequest {
+// REQUESTS
+
+message GetOneNewsByIdRequest {
     string id = 1;
 }
+
+message CreateNewsRequest {
+    string creator_username = 1;
+    string title = 2;
+    string content = 3;
+}
+
+message UpdateNewsByIdRequest {
+    string creator_username = 1;
+    string title = 2;
+    string content = 3;
+}
+
+// RESPONSES
 
 message GetOneNewsResponse {
     string title = 1;

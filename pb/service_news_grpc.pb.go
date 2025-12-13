@@ -32,10 +32,10 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type HavlabsNewsClient interface {
 	GetAllNews(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllNewsResponse, error)
-	GetOneNews(ctx context.Context, in *OneNewsIdRequest, opts ...grpc.CallOption) (*GetOneNewsResponse, error)
-	CreateNews(ctx context.Context, in *OneNewsIdRequest, opts ...grpc.CallOption) (*NewsIdResponse, error)
-	UpdateNews(ctx context.Context, in *OneNewsIdRequest, opts ...grpc.CallOption) (*NewsIdResponse, error)
-	DeleteNews(ctx context.Context, in *OneNewsIdRequest, opts ...grpc.CallOption) (*NewsIdResponse, error)
+	GetOneNews(ctx context.Context, in *GetOneNewsByIdRequest, opts ...grpc.CallOption) (*GetOneNewsResponse, error)
+	CreateNews(ctx context.Context, in *CreateNewsRequest, opts ...grpc.CallOption) (*NewsIdResponse, error)
+	UpdateNews(ctx context.Context, in *UpdateNewsByIdRequest, opts ...grpc.CallOption) (*NewsIdResponse, error)
+	DeleteNews(ctx context.Context, in *GetOneNewsByIdRequest, opts ...grpc.CallOption) (*NewsIdResponse, error)
 }
 
 type havlabsNewsClient struct {
@@ -56,7 +56,7 @@ func (c *havlabsNewsClient) GetAllNews(ctx context.Context, in *emptypb.Empty, o
 	return out, nil
 }
 
-func (c *havlabsNewsClient) GetOneNews(ctx context.Context, in *OneNewsIdRequest, opts ...grpc.CallOption) (*GetOneNewsResponse, error) {
+func (c *havlabsNewsClient) GetOneNews(ctx context.Context, in *GetOneNewsByIdRequest, opts ...grpc.CallOption) (*GetOneNewsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetOneNewsResponse)
 	err := c.cc.Invoke(ctx, HavlabsNews_GetOneNews_FullMethodName, in, out, cOpts...)
@@ -66,7 +66,7 @@ func (c *havlabsNewsClient) GetOneNews(ctx context.Context, in *OneNewsIdRequest
 	return out, nil
 }
 
-func (c *havlabsNewsClient) CreateNews(ctx context.Context, in *OneNewsIdRequest, opts ...grpc.CallOption) (*NewsIdResponse, error) {
+func (c *havlabsNewsClient) CreateNews(ctx context.Context, in *CreateNewsRequest, opts ...grpc.CallOption) (*NewsIdResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(NewsIdResponse)
 	err := c.cc.Invoke(ctx, HavlabsNews_CreateNews_FullMethodName, in, out, cOpts...)
@@ -76,7 +76,7 @@ func (c *havlabsNewsClient) CreateNews(ctx context.Context, in *OneNewsIdRequest
 	return out, nil
 }
 
-func (c *havlabsNewsClient) UpdateNews(ctx context.Context, in *OneNewsIdRequest, opts ...grpc.CallOption) (*NewsIdResponse, error) {
+func (c *havlabsNewsClient) UpdateNews(ctx context.Context, in *UpdateNewsByIdRequest, opts ...grpc.CallOption) (*NewsIdResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(NewsIdResponse)
 	err := c.cc.Invoke(ctx, HavlabsNews_UpdateNews_FullMethodName, in, out, cOpts...)
@@ -86,7 +86,7 @@ func (c *havlabsNewsClient) UpdateNews(ctx context.Context, in *OneNewsIdRequest
 	return out, nil
 }
 
-func (c *havlabsNewsClient) DeleteNews(ctx context.Context, in *OneNewsIdRequest, opts ...grpc.CallOption) (*NewsIdResponse, error) {
+func (c *havlabsNewsClient) DeleteNews(ctx context.Context, in *GetOneNewsByIdRequest, opts ...grpc.CallOption) (*NewsIdResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(NewsIdResponse)
 	err := c.cc.Invoke(ctx, HavlabsNews_DeleteNews_FullMethodName, in, out, cOpts...)
@@ -101,10 +101,10 @@ func (c *havlabsNewsClient) DeleteNews(ctx context.Context, in *OneNewsIdRequest
 // for forward compatibility.
 type HavlabsNewsServer interface {
 	GetAllNews(context.Context, *emptypb.Empty) (*GetAllNewsResponse, error)
-	GetOneNews(context.Context, *OneNewsIdRequest) (*GetOneNewsResponse, error)
-	CreateNews(context.Context, *OneNewsIdRequest) (*NewsIdResponse, error)
-	UpdateNews(context.Context, *OneNewsIdRequest) (*NewsIdResponse, error)
-	DeleteNews(context.Context, *OneNewsIdRequest) (*NewsIdResponse, error)
+	GetOneNews(context.Context, *GetOneNewsByIdRequest) (*GetOneNewsResponse, error)
+	CreateNews(context.Context, *CreateNewsRequest) (*NewsIdResponse, error)
+	UpdateNews(context.Context, *UpdateNewsByIdRequest) (*NewsIdResponse, error)
+	DeleteNews(context.Context, *GetOneNewsByIdRequest) (*NewsIdResponse, error)
 	mustEmbedUnimplementedHavlabsNewsServer()
 }
 
@@ -118,16 +118,16 @@ type UnimplementedHavlabsNewsServer struct{}
 func (UnimplementedHavlabsNewsServer) GetAllNews(context.Context, *emptypb.Empty) (*GetAllNewsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetAllNews not implemented")
 }
-func (UnimplementedHavlabsNewsServer) GetOneNews(context.Context, *OneNewsIdRequest) (*GetOneNewsResponse, error) {
+func (UnimplementedHavlabsNewsServer) GetOneNews(context.Context, *GetOneNewsByIdRequest) (*GetOneNewsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetOneNews not implemented")
 }
-func (UnimplementedHavlabsNewsServer) CreateNews(context.Context, *OneNewsIdRequest) (*NewsIdResponse, error) {
+func (UnimplementedHavlabsNewsServer) CreateNews(context.Context, *CreateNewsRequest) (*NewsIdResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateNews not implemented")
 }
-func (UnimplementedHavlabsNewsServer) UpdateNews(context.Context, *OneNewsIdRequest) (*NewsIdResponse, error) {
+func (UnimplementedHavlabsNewsServer) UpdateNews(context.Context, *UpdateNewsByIdRequest) (*NewsIdResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateNews not implemented")
 }
-func (UnimplementedHavlabsNewsServer) DeleteNews(context.Context, *OneNewsIdRequest) (*NewsIdResponse, error) {
+func (UnimplementedHavlabsNewsServer) DeleteNews(context.Context, *GetOneNewsByIdRequest) (*NewsIdResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteNews not implemented")
 }
 func (UnimplementedHavlabsNewsServer) mustEmbedUnimplementedHavlabsNewsServer() {}
@@ -170,7 +170,7 @@ func _HavlabsNews_GetAllNews_Handler(srv interface{}, ctx context.Context, dec f
 }
 
 func _HavlabsNews_GetOneNews_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(OneNewsIdRequest)
+	in := new(GetOneNewsByIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -182,13 +182,13 @@ func _HavlabsNews_GetOneNews_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: HavlabsNews_GetOneNews_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HavlabsNewsServer).GetOneNews(ctx, req.(*OneNewsIdRequest))
+		return srv.(HavlabsNewsServer).GetOneNews(ctx, req.(*GetOneNewsByIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _HavlabsNews_CreateNews_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(OneNewsIdRequest)
+	in := new(CreateNewsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -200,13 +200,13 @@ func _HavlabsNews_CreateNews_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: HavlabsNews_CreateNews_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HavlabsNewsServer).CreateNews(ctx, req.(*OneNewsIdRequest))
+		return srv.(HavlabsNewsServer).CreateNews(ctx, req.(*CreateNewsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _HavlabsNews_UpdateNews_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(OneNewsIdRequest)
+	in := new(UpdateNewsByIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -218,13 +218,13 @@ func _HavlabsNews_UpdateNews_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: HavlabsNews_UpdateNews_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HavlabsNewsServer).UpdateNews(ctx, req.(*OneNewsIdRequest))
+		return srv.(HavlabsNewsServer).UpdateNews(ctx, req.(*UpdateNewsByIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _HavlabsNews_DeleteNews_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(OneNewsIdRequest)
+	in := new(GetOneNewsByIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -236,7 +236,7 @@ func _HavlabsNews_DeleteNews_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: HavlabsNews_DeleteNews_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HavlabsNewsServer).DeleteNews(ctx, req.(*OneNewsIdRequest))
+		return srv.(HavlabsNewsServer).DeleteNews(ctx, req.(*GetOneNewsByIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
