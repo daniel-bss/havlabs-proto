@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/daniel-bss/havlabs-proto/media/pb";
+
+message SomeResponse {
+    string url = 1;
+}
+
+service HavlabsMedia {
+
+    rpc CreateUploadURL(google.protobuf.Empty) returns (SomeResponse) {
+        option (google.api.http) = {
+            post: "/media"
+            // body: "*"
+        };
+    }
+
+}
