@@ -2,21 +2,23 @@ syntax = "proto3";
 
 package pb;
 
+import "media.proto";
 import "google/api/annotations.proto";
-import "google/protobuf/empty.proto";
 
 option go_package = "github.com/daniel-bss/havlabs-proto/media/pb";
 
-message SomeResponse {
-    string url = 1;
-}
-
 service HavlabsMedia {
 
-    rpc CreateUploadURL(google.protobuf.Empty) returns (SomeResponse) {
+    rpc CreateUploadSession(CreateUploadSessionRequest) returns (CreateUploadSessionResponse) {
         option (google.api.http) = {
-            post: "/media"
-            // body: "*"
+            post: "/media/upload-session"
+            body: "*"
+        };
+    }
+
+    rpc ConfirmUpload(ConfirmUploadRequest) returns (ConfirmUploadResponse) {
+        option (google.api.http) = {
+            post: "/media/confirm-upload"
         };
     }
 

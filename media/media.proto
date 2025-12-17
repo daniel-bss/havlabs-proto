@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package pb;
+
+import "buf/validate/validate.proto";
+
+option go_package = "github.com/daniel-bss/havlabs-proto/media/pb";
+
+// CreateUploadSession
+
+message CreateUploadSessionRequest {
+    string purpose = 1;
+    string content_type = 2;
+}
+
+message CreateUploadSessionResponse {
+    string media_id = 1;
+    string upload_url = 2;
+}
+
+// ConfirmUpload
+
+enum StatusEnum {
+    READY = 0;
+    FAILED = 1;
+}
+
+message ConfirmUploadRequest {
+    string media_id = 1;
+}
+
+message ConfirmUploadResponse {
+    string media_id = 1;
+    StatusEnum status = 2 [(buf.validate.field).enum.defined_only = true];
+}
