@@ -272,16 +272,16 @@ var File_media_proto protoreflect.FileDescriptor
 
 const file_media_proto_rawDesc = "" +
 	"\n" +
-	"\vmedia.proto\x12\x02pb\x1a\x1bbuf/validate/validate.proto\"Y\n" +
-	"\x1aCreateUploadSessionRequest\x12\x18\n" +
-	"\apurpose\x18\x01 \x01(\tR\apurpose\x12!\n" +
-	"\fcontent_type\x18\x02 \x01(\tR\vcontentType\"W\n" +
+	"\vmedia.proto\x12\x02pb\x1a\x1bbuf/validate/validate.proto\"k\n" +
+	"\x1aCreateUploadSessionRequest\x12!\n" +
+	"\apurpose\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\apurpose\x12*\n" +
+	"\fcontent_type\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vcontentType\"W\n" +
 	"\x1bCreateUploadSessionResponse\x12\x19\n" +
 	"\bmedia_id\x18\x01 \x01(\tR\amediaId\x12\x1d\n" +
 	"\n" +
-	"upload_url\x18\x02 \x01(\tR\tuploadUrl\"1\n" +
-	"\x14ConfirmUploadRequest\x12\x19\n" +
-	"\bmedia_id\x18\x01 \x01(\tR\amediaId\"d\n" +
+	"upload_url\x18\x02 \x01(\tR\tuploadUrl\":\n" +
+	"\x14ConfirmUploadRequest\x12\"\n" +
+	"\bmedia_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\amediaId\"d\n" +
 	"\x15ConfirmUploadResponse\x12\x19\n" +
 	"\bmedia_id\x18\x01 \x01(\tR\amediaId\x120\n" +
 	"\x06status\x18\x02 \x01(\x0e2\x0e.pb.StatusEnumB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06status*#\n" +

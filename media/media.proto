@@ -9,8 +9,8 @@ option go_package = "github.com/daniel-bss/havlabs-proto/media/pb";
 // CreateUploadSession
 
 message CreateUploadSessionRequest {
-    string purpose = 1;
-    string content_type = 2;
+    string purpose = 1 [ (buf.validate.field).string.min_len = 1 ];
+    string content_type = 2 [ (buf.validate.field).string.min_len = 1 ];
 }
 
 message CreateUploadSessionResponse {
@@ -26,10 +26,10 @@ enum StatusEnum {
 }
 
 message ConfirmUploadRequest {
-    string media_id = 1;
+    string media_id = 1 [ (buf.validate.field).string.min_len = 1 ];
 }
 
 message ConfirmUploadResponse {
     string media_id = 1;
-    StatusEnum status = 2 [(buf.validate.field).enum.defined_only = true];
+    StatusEnum status = 2 [ (buf.validate.field).enum.defined_only = true ];
 }

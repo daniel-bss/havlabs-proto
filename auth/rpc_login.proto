@@ -8,8 +8,8 @@ import "google/protobuf/timestamp.proto";
 option go_package = "github.com/daniel-bss/havlabs-proto/auth/pb";
 
 message LoginRequest {
-    string username = 1;
-    string password = 2;
+    string username = 1 [ (buf.validate.field).string.min_len = 1 ];
+    string password = 2 [ (buf.validate.field).string.min_len = 1 ];
 }
 
 message LoginData {
