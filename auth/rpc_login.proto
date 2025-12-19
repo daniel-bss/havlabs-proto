@@ -4,6 +4,7 @@ package pb;
 
 import "user.proto";
 import "google/protobuf/timestamp.proto";
+import "buf/validate/validate.proto";
 
 option go_package = "github.com/daniel-bss/havlabs-proto/auth/pb";
 

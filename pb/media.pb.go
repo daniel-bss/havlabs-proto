@@ -25,19 +25,19 @@ const (
 type StatusEnum int32
 
 const (
-	StatusEnum_READY  StatusEnum = 0
-	StatusEnum_FAILED StatusEnum = 1
+	StatusEnum_ready  StatusEnum = 0
+	StatusEnum_failed StatusEnum = 1
 )
 
 // Enum value maps for StatusEnum.
 var (
 	StatusEnum_name = map[int32]string{
-		0: "READY",
-		1: "FAILED",
+		0: "ready",
+		1: "failed",
 	}
 	StatusEnum_value = map[string]int32{
-		"READY":  0,
-		"FAILED": 1,
+		"ready":  0,
+		"failed": 1,
 	}
 )
 
@@ -72,6 +72,7 @@ type CreateUploadSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Purpose       string                 `protobuf:"bytes,1,opt,name=purpose,proto3" json:"purpose,omitempty"`
 	ContentType   string                 `protobuf:"bytes,2,opt,name=content_type,json=contentType,proto3" json:"content_type,omitempty"`
+	FileName      string                 `protobuf:"bytes,3,opt,name=file_name,json=fileName,proto3" json:"file_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -116,6 +117,13 @@ func (x *CreateUploadSessionRequest) GetPurpose() string {
 func (x *CreateUploadSessionRequest) GetContentType() string {
 	if x != nil {
 		return x.ContentType
+	}
+	return ""
+}
+
+func (x *CreateUploadSessionRequest) GetFileName() string {
+	if x != nil {
+		return x.FileName
 	}
 	return ""
 }
@@ -265,17 +273,18 @@ func (x *ConfirmUploadResponse) GetStatus() StatusEnum {
 	if x != nil {
 		return x.Status
 	}
-	return StatusEnum_READY
+	return StatusEnum_ready
 }
 
 var File_media_proto protoreflect.FileDescriptor
 
 const file_media_proto_rawDesc = "" +
 	"\n" +
-	"\vmedia.proto\x12\x02pb\x1a\x1bbuf/validate/validate.proto\"k\n" +
+	"\vmedia.proto\x12\x02pb\x1a\x1bbuf/validate/validate.proto\"\x91\x01\n" +
 	"\x1aCreateUploadSessionRequest\x12!\n" +
 	"\apurpose\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\apurpose\x12*\n" +
-	"\fcontent_type\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vcontentType\"W\n" +
+	"\fcontent_type\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\vcontentType\x12$\n" +
+	"\tfile_name\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bfileName\"W\n" +
 	"\x1bCreateUploadSessionResponse\x12\x19\n" +
 	"\bmedia_id\x18\x01 \x01(\tR\amediaId\x12\x1d\n" +
 	"\n" +
@@ -287,9 +296,9 @@ const file_media_proto_rawDesc = "" +
 	"\x06status\x18\x02 \x01(\x0e2\x0e.pb.StatusEnumB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06status*#\n" +
 	"\n" +
 	"StatusEnum\x12\t\n" +
-	"\x05READY\x10\x00\x12\n" +
+	"\x05ready\x10\x00\x12\n" +
 	"\n" +
-	"\x06FAILED\x10\x01B.Z,github.com/daniel-bss/havlabs-proto/media/pbb\x06proto3"
+	"\x06failed\x10\x01B.Z,github.com/daniel-bss/havlabs-proto/media/pbb\x06proto3"
 
 var (
 	file_media_proto_rawDescOnce sync.Once

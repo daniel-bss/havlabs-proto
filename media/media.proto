@@ -11,6 +11,7 @@ option go_package = "github.com/daniel-bss/havlabs-proto/media/pb";
 message CreateUploadSessionRequest {
     string purpose = 1 [ (buf.validate.field).string.min_len = 1 ];
     string content_type = 2 [ (buf.validate.field).string.min_len = 1 ];
+    string file_name = 3 [ (buf.validate.field).string.min_len = 1 ];
 }
 
 message CreateUploadSessionResponse {
@@ -21,8 +22,8 @@ message CreateUploadSessionResponse {
 // ConfirmUpload
 
 enum StatusEnum {
-    READY = 0;
-    FAILED = 1;
+    ready = 0;
+    failed = 1;
 }
 
 message ConfirmUploadRequest {
