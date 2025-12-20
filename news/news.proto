@@ -16,6 +16,7 @@ message GetOneNewsByIdRequest {
 message CreateNewsRequest {
     string title = 1 [ (buf.validate.field).string.min_len = 1 ];
     string content = 2 [ (buf.validate.field).string.min_len = 1 ];
+    string media_id = 3 [ (buf.validate.field).string.min_len = 1 ];
 }
 
 message UpdateNewsByIdRequest {

@@ -71,6 +71,7 @@ type CreateNewsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
 	Content       string                 `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
+	MediaId       string                 `protobuf:"bytes,3,opt,name=media_id,json=mediaId,proto3" json:"media_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -115,6 +116,13 @@ func (x *CreateNewsRequest) GetTitle() string {
 func (x *CreateNewsRequest) GetContent() string {
 	if x != nil {
 		return x.Content
+	}
+	return ""
+}
+
+func (x *CreateNewsRequest) GetMediaId() string {
+	if x != nil {
+		return x.MediaId
 	}
 	return ""
 }
@@ -334,10 +342,11 @@ const file_news_proto_rawDesc = "" +
 	"\n" +
 	"news.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bbuf/validate/validate.proto\"0\n" +
 	"\x15GetOneNewsByIdRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"U\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"y\n" +
 	"\x11CreateNewsRequest\x12\x1d\n" +
 	"\x05title\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05title\x12!\n" +
-	"\acontent\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\acontent\"Y\n" +
+	"\acontent\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\acontent\x12\"\n" +
+	"\bmedia_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\amediaId\"Y\n" +
 	"\x15UpdateNewsByIdRequest\x12\x1d\n" +
 	"\x05title\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05title\x12!\n" +
 	"\acontent\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\acontent\"\x9d\x01\n" +
