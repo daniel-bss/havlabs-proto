@@ -10,13 +10,13 @@ option go_package = "github.com/daniel-bss/havlabs-proto/news/pb";
 
 service HavlabsNews {
 
-    rpc GetAllNews(google.protobuf.Empty) returns (GetAllNewsResponse) {
+    rpc GetAllNews(google.protobuf.Empty) returns (ListNewsResponse) {
         option (google.api.http) = {
             get: "/news"
         };
     }
 
-    rpc GetOneNews(GetOneNewsByIdRequest) returns (GetOneNewsResponse) {
+    rpc GetOneNews(GetOneNewsByIdRequest) returns (OneNewsResponse) {
         option (google.api.http) = {
             get: "/news/{id}"
             body: "*"

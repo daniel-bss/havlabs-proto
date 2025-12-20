@@ -31,8 +31,8 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type HavlabsNewsClient interface {
-	GetAllNews(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllNewsResponse, error)
-	GetOneNews(ctx context.Context, in *GetOneNewsByIdRequest, opts ...grpc.CallOption) (*GetOneNewsResponse, error)
+	GetAllNews(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListNewsResponse, error)
+	GetOneNews(ctx context.Context, in *GetOneNewsByIdRequest, opts ...grpc.CallOption) (*OneNewsResponse, error)
 	CreateNews(ctx context.Context, in *CreateNewsRequest, opts ...grpc.CallOption) (*NewsIdResponse, error)
 	UpdateNews(ctx context.Context, in *UpdateNewsByIdRequest, opts ...grpc.CallOption) (*NewsIdResponse, error)
 	DeleteNews(ctx context.Context, in *GetOneNewsByIdRequest, opts ...grpc.CallOption) (*NewsIdResponse, error)
@@ -46,9 +46,9 @@ func NewHavlabsNewsClient(cc grpc.ClientConnInterface) HavlabsNewsClient {
 	return &havlabsNewsClient{cc}
 }
 
-func (c *havlabsNewsClient) GetAllNews(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllNewsResponse, error) {
+func (c *havlabsNewsClient) GetAllNews(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListNewsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetAllNewsResponse)
+	out := new(ListNewsResponse)
 	err := c.cc.Invoke(ctx, HavlabsNews_GetAllNews_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -56,9 +56,9 @@ func (c *havlabsNewsClient) GetAllNews(ctx context.Context, in *emptypb.Empty, o
 	return out, nil
 }
 
-func (c *havlabsNewsClient) GetOneNews(ctx context.Context, in *GetOneNewsByIdRequest, opts ...grpc.CallOption) (*GetOneNewsResponse, error) {
+func (c *havlabsNewsClient) GetOneNews(ctx context.Context, in *GetOneNewsByIdRequest, opts ...grpc.CallOption) (*OneNewsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetOneNewsResponse)
+	out := new(OneNewsResponse)
 	err := c.cc.Invoke(ctx, HavlabsNews_GetOneNews_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -100,8 +100,8 @@ func (c *havlabsNewsClient) DeleteNews(ctx context.Context, in *GetOneNewsByIdRe
 // All implementations must embed UnimplementedHavlabsNewsServer
 // for forward compatibility.
 type HavlabsNewsServer interface {
-	GetAllNews(context.Context, *emptypb.Empty) (*GetAllNewsResponse, error)
-	GetOneNews(context.Context, *GetOneNewsByIdRequest) (*GetOneNewsResponse, error)
+	GetAllNews(context.Context, *emptypb.Empty) (*ListNewsResponse, error)
+	GetOneNews(context.Context, *GetOneNewsByIdRequest) (*OneNewsResponse, error)
 	CreateNews(context.Context, *CreateNewsRequest) (*NewsIdResponse, error)
 	UpdateNews(context.Context, *UpdateNewsByIdRequest) (*NewsIdResponse, error)
 	DeleteNews(context.Context, *GetOneNewsByIdRequest) (*NewsIdResponse, error)
@@ -115,10 +115,10 @@ type HavlabsNewsServer interface {
 // pointer dereference when methods are called.
 type UnimplementedHavlabsNewsServer struct{}
 
-func (UnimplementedHavlabsNewsServer) GetAllNews(context.Context, *emptypb.Empty) (*GetAllNewsResponse, error) {
+func (UnimplementedHavlabsNewsServer) GetAllNews(context.Context, *emptypb.Empty) (*ListNewsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetAllNews not implemented")
 }
-func (UnimplementedHavlabsNewsServer) GetOneNews(context.Context, *GetOneNewsByIdRequest) (*GetOneNewsResponse, error) {
+func (UnimplementedHavlabsNewsServer) GetOneNews(context.Context, *GetOneNewsByIdRequest) (*OneNewsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetOneNews not implemented")
 }
 func (UnimplementedHavlabsNewsServer) CreateNews(context.Context, *CreateNewsRequest) (*NewsIdResponse, error) {

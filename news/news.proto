@@ -14,28 +14,26 @@ message GetOneNewsByIdRequest {
 }
 
 message CreateNewsRequest {
-    string creator_username = 1 [ (buf.validate.field).string.min_len = 1 ];
-    string title = 2 [ (buf.validate.field).string.min_len = 1 ];
-    string content = 3 [ (buf.validate.field).string.min_len = 1 ];
+    string title = 1 [ (buf.validate.field).string.min_len = 1 ];
+    string content = 2 [ (buf.validate.field).string.min_len = 1 ];
 }
 
 message UpdateNewsByIdRequest {
-    string creator_username = 1 [ (buf.validate.field).string.min_len = 1 ];
-    string title = 2 [ (buf.validate.field).string.min_len = 1 ];
-    string content = 3 [ (buf.validate.field).string.min_len = 1 ];
+    string title = 1 [ (buf.validate.field).string.min_len = 1 ];
+    string content = 2 [ (buf.validate.field).string.min_len = 1 ];
 }
 
 // RESPONSES
 
-message GetOneNewsResponse {
+message OneNewsResponse {
     string title = 1 [ (buf.validate.field).string.min_len = 1 ];
-    string excerpt = 2 [ (buf.validate.field).string.min_len = 1 ];
+    string content = 2 [ (buf.validate.field).string.min_len = 1 ];
     string image_url = 3 [ (buf.validate.field).string.min_len = 1 ];
     google.protobuf.Timestamp published_at = 4 [ (buf.validate.field).string.min_len = 1 ];
 }
 
-message GetAllNewsResponse {
-    repeated GetOneNewsResponse news = 1 [ (buf.validate.field).string.min_len = 1 ];
+message ListNewsResponse {
+    repeated OneNewsResponse news = 1 [ (buf.validate.field).string.min_len = 1 ];
 }
 
 message NewsIdResponse {
