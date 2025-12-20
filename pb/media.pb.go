@@ -276,6 +276,94 @@ func (x *ConfirmUploadResponse) GetStatus() StatusEnum {
 	return StatusEnum_ready
 }
 
+type GetOneMediaByIdRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetOneMediaByIdRequest) Reset() {
+	*x = GetOneMediaByIdRequest{}
+	mi := &file_media_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetOneMediaByIdRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetOneMediaByIdRequest) ProtoMessage() {}
+
+func (x *GetOneMediaByIdRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_media_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetOneMediaByIdRequest.ProtoReflect.Descriptor instead.
+func (*GetOneMediaByIdRequest) Descriptor() ([]byte, []int) {
+	return file_media_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetOneMediaByIdRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type OneMediaResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OneMediaResponse) Reset() {
+	*x = OneMediaResponse{}
+	mi := &file_media_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OneMediaResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OneMediaResponse) ProtoMessage() {}
+
+func (x *OneMediaResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_media_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OneMediaResponse.ProtoReflect.Descriptor instead.
+func (*OneMediaResponse) Descriptor() ([]byte, []int) {
+	return file_media_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *OneMediaResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
 var File_media_proto protoreflect.FileDescriptor
 
 const file_media_proto_rawDesc = "" +
@@ -293,7 +381,11 @@ const file_media_proto_rawDesc = "" +
 	"\bmedia_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\amediaId\"d\n" +
 	"\x15ConfirmUploadResponse\x12\x19\n" +
 	"\bmedia_id\x18\x01 \x01(\tR\amediaId\x120\n" +
-	"\x06status\x18\x02 \x01(\x0e2\x0e.pb.StatusEnumB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06status*#\n" +
+	"\x06status\x18\x02 \x01(\x0e2\x0e.pb.StatusEnumB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06status\"(\n" +
+	"\x16GetOneMediaByIdRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\"\n" +
+	"\x10OneMediaResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id*#\n" +
 	"\n" +
 	"StatusEnum\x12\t\n" +
 	"\x05ready\x10\x00\x12\n" +
@@ -313,13 +405,15 @@ func file_media_proto_rawDescGZIP() []byte {
 }
 
 var file_media_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_media_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_media_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_media_proto_goTypes = []any{
 	(StatusEnum)(0),                     // 0: pb.StatusEnum
 	(*CreateUploadSessionRequest)(nil),  // 1: pb.CreateUploadSessionRequest
 	(*CreateUploadSessionResponse)(nil), // 2: pb.CreateUploadSessionResponse
 	(*ConfirmUploadRequest)(nil),        // 3: pb.ConfirmUploadRequest
 	(*ConfirmUploadResponse)(nil),       // 4: pb.ConfirmUploadResponse
+	(*GetOneMediaByIdRequest)(nil),      // 5: pb.GetOneMediaByIdRequest
+	(*OneMediaResponse)(nil),            // 6: pb.OneMediaResponse
 }
 var file_media_proto_depIdxs = []int32{
 	0, // 0: pb.ConfirmUploadResponse.status:type_name -> pb.StatusEnum
@@ -341,7 +435,7 @@ func file_media_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_media_proto_rawDesc), len(file_media_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

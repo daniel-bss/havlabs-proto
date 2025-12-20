@@ -25,24 +25,29 @@ var File_service_media_proto protoreflect.FileDescriptor
 
 const file_service_media_proto_rawDesc = "" +
 	"\n" +
-	"\x13service_media.proto\x12\x02pb\x1a\vmedia.proto\x1a\x1cgoogle/api/annotations.proto2\xed\x01\n" +
+	"\x13service_media.proto\x12\x02pb\x1a\vmedia.proto\x1a\x1cgoogle/api/annotations.proto2\xc4\x02\n" +
 	"\fHavlabsMedia\x12x\n" +
 	"\x13CreateUploadSession\x12\x1e.pb.CreateUploadSessionRequest\x1a\x1f.pb.CreateUploadSessionResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\"\x15/media/upload-session\x12c\n" +
-	"\rConfirmUpload\x12\x18.pb.ConfirmUploadRequest\x1a\x19.pb.ConfirmUploadResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\"\x15/media/confirm-uploadB.Z,github.com/daniel-bss/havlabs-proto/media/pbb\x06proto3"
+	"\rConfirmUpload\x12\x18.pb.ConfirmUploadRequest\x1a\x19.pb.ConfirmUploadResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\"\x15/media/confirm-upload\x12U\n" +
+	"\fGetMediaById\x12\x1a.pb.GetOneMediaByIdRequest\x1a\x14.pb.OneMediaResponse\"\x13\x82\xd3\xe4\x93\x02\r\x12\v/media/{id}B.Z,github.com/daniel-bss/havlabs-proto/media/pbb\x06proto3"
 
 var file_service_media_proto_goTypes = []any{
 	(*CreateUploadSessionRequest)(nil),  // 0: pb.CreateUploadSessionRequest
 	(*ConfirmUploadRequest)(nil),        // 1: pb.ConfirmUploadRequest
-	(*CreateUploadSessionResponse)(nil), // 2: pb.CreateUploadSessionResponse
-	(*ConfirmUploadResponse)(nil),       // 3: pb.ConfirmUploadResponse
+	(*GetOneMediaByIdRequest)(nil),      // 2: pb.GetOneMediaByIdRequest
+	(*CreateUploadSessionResponse)(nil), // 3: pb.CreateUploadSessionResponse
+	(*ConfirmUploadResponse)(nil),       // 4: pb.ConfirmUploadResponse
+	(*OneMediaResponse)(nil),            // 5: pb.OneMediaResponse
 }
 var file_service_media_proto_depIdxs = []int32{
 	0, // 0: pb.HavlabsMedia.CreateUploadSession:input_type -> pb.CreateUploadSessionRequest
 	1, // 1: pb.HavlabsMedia.ConfirmUpload:input_type -> pb.ConfirmUploadRequest
-	2, // 2: pb.HavlabsMedia.CreateUploadSession:output_type -> pb.CreateUploadSessionResponse
-	3, // 3: pb.HavlabsMedia.ConfirmUpload:output_type -> pb.ConfirmUploadResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	2, // 2: pb.HavlabsMedia.GetMediaById:input_type -> pb.GetOneMediaByIdRequest
+	3, // 3: pb.HavlabsMedia.CreateUploadSession:output_type -> pb.CreateUploadSessionResponse
+	4, // 4: pb.HavlabsMedia.ConfirmUpload:output_type -> pb.ConfirmUploadResponse
+	5, // 5: pb.HavlabsMedia.GetMediaById:output_type -> pb.OneMediaResponse
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name

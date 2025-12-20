@@ -340,16 +340,16 @@ const file_news_proto_rawDesc = "" +
 	"\acontent\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\acontent\"Y\n" +
 	"\x15UpdateNewsByIdRequest\x12\x1d\n" +
 	"\x05title\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05title\x12!\n" +
-	"\acontent\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\acontent\"\xc1\x01\n" +
-	"\x0fOneNewsResponse\x12\x1d\n" +
-	"\x05title\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05title\x12!\n" +
-	"\acontent\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\acontent\x12$\n" +
-	"\timage_url\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bimageUrl\x12F\n" +
-	"\fpublished_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampB\a\xbaH\x04r\x02\x10\x01R\vpublishedAt\"D\n" +
-	"\x10ListNewsResponse\x120\n" +
-	"\x04news\x18\x01 \x03(\v2\x13.pb.OneNewsResponseB\a\xbaH\x04r\x02\x10\x01R\x04news\")\n" +
-	"\x0eNewsIdResponse\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02idB-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
+	"\acontent\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\acontent\"\x9d\x01\n" +
+	"\x0fOneNewsResponse\x12\x14\n" +
+	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
+	"\acontent\x18\x02 \x01(\tR\acontent\x12\x1b\n" +
+	"\timage_url\x18\x03 \x01(\tR\bimageUrl\x12=\n" +
+	"\fpublished_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vpublishedAt\";\n" +
+	"\x10ListNewsResponse\x12'\n" +
+	"\x04news\x18\x01 \x03(\v2\x13.pb.OneNewsResponseR\x04news\" \n" +
+	"\x0eNewsIdResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02idB-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
 
 var (
 	file_news_proto_rawDescOnce sync.Once

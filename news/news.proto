@@ -26,16 +26,16 @@ message UpdateNewsByIdRequest {
 // RESPONSES
 
 message OneNewsResponse {
-    string title = 1 [ (buf.validate.field).string.min_len = 1 ];
-    string content = 2 [ (buf.validate.field).string.min_len = 1 ];
-    string image_url = 3 [ (buf.validate.field).string.min_len = 1 ];
-    google.protobuf.Timestamp published_at = 4 [ (buf.validate.field).string.min_len = 1 ];
+    string title = 1;
+    string content = 2;
+    string image_url = 3;
+    google.protobuf.Timestamp published_at = 4;
 }
 
 message ListNewsResponse {
-    repeated OneNewsResponse news = 1 [ (buf.validate.field).string.min_len = 1 ];
+    repeated OneNewsResponse news = 1;
 }
 
 message NewsIdResponse {
-    string id = 1 [ (buf.validate.field).string.min_len = 1 ];
+    string id = 1;
 }

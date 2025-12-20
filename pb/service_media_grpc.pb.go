@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	HavlabsMedia_CreateUploadSession_FullMethodName = "/pb.HavlabsMedia/CreateUploadSession"
 	HavlabsMedia_ConfirmUpload_FullMethodName       = "/pb.HavlabsMedia/ConfirmUpload"
+	HavlabsMedia_GetMediaById_FullMethodName        = "/pb.HavlabsMedia/GetMediaById"
 )
 
 // HavlabsMediaClient is the client API for HavlabsMedia service.
@@ -29,6 +30,7 @@ const (
 type HavlabsMediaClient interface {
 	CreateUploadSession(ctx context.Context, in *CreateUploadSessionRequest, opts ...grpc.CallOption) (*CreateUploadSessionResponse, error)
 	ConfirmUpload(ctx context.Context, in *ConfirmUploadRequest, opts ...grpc.CallOption) (*ConfirmUploadResponse, error)
+	GetMediaById(ctx context.Context, in *GetOneMediaByIdRequest, opts ...grpc.CallOption) (*OneMediaResponse, error)
 }
 
 type havlabsMediaClient struct {
@@ -59,12 +61,23 @@ func (c *havlabsMediaClient) ConfirmUpload(ctx context.Context, in *ConfirmUploa
 	return out, nil
 }
 
+func (c *havlabsMediaClient) GetMediaById(ctx context.Context, in *GetOneMediaByIdRequest, opts ...grpc.CallOption) (*OneMediaResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(OneMediaResponse)
+	err := c.cc.Invoke(ctx, HavlabsMedia_GetMediaById_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // HavlabsMediaServer is the server API for HavlabsMedia service.
 // All implementations must embed UnimplementedHavlabsMediaServer
 // for forward compatibility.
 type HavlabsMediaServer interface {
 	CreateUploadSession(context.Context, *CreateUploadSessionRequest) (*CreateUploadSessionResponse, error)
 	ConfirmUpload(context.Context, *ConfirmUploadRequest) (*ConfirmUploadResponse, error)
+	GetMediaById(context.Context, *GetOneMediaByIdRequest) (*OneMediaResponse, error)
 	mustEmbedUnimplementedHavlabsMediaServer()
 }
 
@@ -80,6 +93,9 @@ func (UnimplementedHavlabsMediaServer) CreateUploadSession(context.Context, *Cre
 }
 func (UnimplementedHavlabsMediaServer) ConfirmUpload(context.Context, *ConfirmUploadRequest) (*ConfirmUploadResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ConfirmUpload not implemented")
+}
+func (UnimplementedHavlabsMediaServer) GetMediaById(context.Context, *GetOneMediaByIdRequest) (*OneMediaResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetMediaById not implemented")
 }
 func (UnimplementedHavlabsMediaServer) mustEmbedUnimplementedHavlabsMediaServer() {}
 func (UnimplementedHavlabsMediaServer) testEmbeddedByValue()                      {}
@@ -138,6 +154,24 @@ func _HavlabsMedia_ConfirmUpload_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _HavlabsMedia_GetMediaById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOneMediaByIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HavlabsMediaServer).GetMediaById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HavlabsMedia_GetMediaById_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HavlabsMediaServer).GetMediaById(ctx, req.(*GetOneMediaByIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // HavlabsMedia_ServiceDesc is the grpc.ServiceDesc for HavlabsMedia service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -152,6 +186,10 @@ var HavlabsMedia_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ConfirmUpload",
 			Handler:    _HavlabsMedia_ConfirmUpload_Handler,
+		},
+		{
+			MethodName: "GetMediaById",
+			Handler:    _HavlabsMedia_GetMediaById_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

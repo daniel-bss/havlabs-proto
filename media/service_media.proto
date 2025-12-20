@@ -22,4 +22,10 @@ service HavlabsMedia {
         };
     }
 
+    rpc GetMediaById(GetOneMediaByIdRequest) returns (OneMediaResponse) {
+        option (google.api.http) = {
+            get: "/media/{id}"
+        };
+    }
+
 }
