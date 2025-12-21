@@ -8,8 +8,8 @@ import "buf/validate/validate.proto";
 option go_package = "github.com/daniel-bss/havlabs-proto/news/pb";
 
 enum SortField {
-    TITLE = 0;
-    PUBLISHED_AT = 1;
+    PUBLISHED_AT = 0;
+    TITLE = 1;
 }
 
 // REQUESTS

@@ -26,19 +26,19 @@ const (
 type SortField int32
 
 const (
-	SortField_TITLE        SortField = 0
-	SortField_PUBLISHED_AT SortField = 1
+	SortField_PUBLISHED_AT SortField = 0
+	SortField_TITLE        SortField = 1
 )
 
 // Enum value maps for SortField.
 var (
 	SortField_name = map[int32]string{
-		0: "TITLE",
-		1: "PUBLISHED_AT",
+		0: "PUBLISHED_AT",
+		1: "TITLE",
 	}
 	SortField_value = map[string]int32{
-		"TITLE":        0,
-		"PUBLISHED_AT": 1,
+		"PUBLISHED_AT": 0,
+		"TITLE":        1,
 	}
 )
 
@@ -154,7 +154,7 @@ func (x *ListNewsRequest) GetSortBy() SortField {
 	if x != nil {
 		return x.SortBy
 	}
-	return SortField_TITLE
+	return SortField_PUBLISHED_AT
 }
 
 func (x *ListNewsRequest) GetDescending() bool {
@@ -511,9 +511,9 @@ const file_news_proto_rawDesc = "" +
 	"\x04news\x18\x01 \x03(\v2\x13.pb.OneNewsResponseR\x04news\" \n" +
 	"\x0eNewsIdResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id*(\n" +
-	"\tSortField\x12\t\n" +
-	"\x05TITLE\x10\x00\x12\x10\n" +
-	"\fPUBLISHED_AT\x10\x01B-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
+	"\tSortField\x12\x10\n" +
+	"\fPUBLISHED_AT\x10\x00\x12\t\n" +
+	"\x05TITLE\x10\x01B-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
 
 var (
 	file_news_proto_rawDescOnce sync.Once
