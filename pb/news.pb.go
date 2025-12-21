@@ -391,6 +391,7 @@ func (x *OneNewsResponse) GetPublishedAt() *timestamppb.Timestamp {
 type ListNewsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	News          []*OneNewsResponse     `protobuf:"bytes,1,rep,name=news,proto3" json:"news,omitempty"`
+	TotalPages    uint32                 `protobuf:"varint,2,opt,name=total_pages,json=totalPages,proto3" json:"total_pages,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -430,6 +431,13 @@ func (x *ListNewsResponse) GetNews() []*OneNewsResponse {
 		return x.News
 	}
 	return nil
+}
+
+func (x *ListNewsResponse) GetTotalPages() uint32 {
+	if x != nil {
+		return x.TotalPages
+	}
+	return 0
 }
 
 type NewsIdResponse struct {
@@ -504,9 +512,11 @@ const file_news_proto_rawDesc = "" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
 	"\acontent\x18\x02 \x01(\tR\acontent\x12\x1b\n" +
 	"\timage_url\x18\x03 \x01(\tR\bimageUrl\x12=\n" +
-	"\fpublished_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vpublishedAt\";\n" +
+	"\fpublished_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vpublishedAt\"\\\n" +
 	"\x10ListNewsResponse\x12'\n" +
-	"\x04news\x18\x01 \x03(\v2\x13.pb.OneNewsResponseR\x04news\" \n" +
+	"\x04news\x18\x01 \x03(\v2\x13.pb.OneNewsResponseR\x04news\x12\x1f\n" +
+	"\vtotal_pages\x18\x02 \x01(\rR\n" +
+	"totalPages\" \n" +
 	"\x0eNewsIdResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id*(\n" +
 	"\tSortField\x12\x10\n" +

@@ -58,6 +58,7 @@ message OneNewsResponse {
 
 message ListNewsResponse {
     repeated OneNewsResponse news = 1;
+    uint32 total_pages = 2;
 }
 
 message NewsIdResponse {
