@@ -29,7 +29,7 @@ message ListNewsRequest {
 
     // sorting
     SortField sort_by = 6;
-    bool descending = 7;
+    bool ascending = 7;
 }
 
 message GetOneNewsByIdRequest {

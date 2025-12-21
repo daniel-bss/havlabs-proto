@@ -80,7 +80,7 @@ type ListNewsRequest struct {
 	Including string `protobuf:"bytes,5,opt,name=including,proto3" json:"including,omitempty"`
 	// sorting
 	SortBy        SortField `protobuf:"varint,6,opt,name=sort_by,json=sortBy,proto3,enum=pb.SortField" json:"sort_by,omitempty"`
-	Descending    bool      `protobuf:"varint,7,opt,name=descending,proto3" json:"descending,omitempty"`
+	Ascending     bool      `protobuf:"varint,7,opt,name=ascending,proto3" json:"ascending,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -157,9 +157,9 @@ func (x *ListNewsRequest) GetSortBy() SortField {
 	return SortField_PUBLISHED_AT
 }
 
-func (x *ListNewsRequest) GetDescending() bool {
+func (x *ListNewsRequest) GetAscending() bool {
 	if x != nil {
-		return x.Descending
+		return x.Ascending
 	}
 	return false
 }
@@ -481,7 +481,7 @@ var File_news_proto protoreflect.FileDescriptor
 const file_news_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"news.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bbuf/validate/validate.proto\"\xa9\x02\n" +
+	"news.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bbuf/validate/validate.proto\"\xa7\x02\n" +
 	"\x0fListNewsRequest\x12\x1d\n" +
 	"\x05limit\x18\x01 \x01(\rB\a\xbaH\x04*\x02(\x01R\x05limit\x12\x1f\n" +
 	"\x06offset\x18\x02 \x01(\rB\a\xbaH\x04*\x02(\x00R\x06offset\x129\n" +
@@ -489,10 +489,8 @@ const file_news_proto_rawDesc = "" +
 	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
 	"\bend_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12\x1c\n" +
 	"\tincluding\x18\x05 \x01(\tR\tincluding\x12&\n" +
-	"\asort_by\x18\x06 \x01(\x0e2\r.pb.SortFieldR\x06sortBy\x12\x1e\n" +
-	"\n" +
-	"descending\x18\a \x01(\bR\n" +
-	"descending\"0\n" +
+	"\asort_by\x18\x06 \x01(\x0e2\r.pb.SortFieldR\x06sortBy\x12\x1c\n" +
+	"\tascending\x18\a \x01(\bR\tascending\"0\n" +
 	"\x15GetOneNewsByIdRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"y\n" +
 	"\x11CreateNewsRequest\x12\x1d\n" +
