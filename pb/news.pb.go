@@ -70,9 +70,9 @@ func (SortField) EnumDescriptor() ([]byte, []int) {
 }
 
 type ListNewsRequest struct {
-	state  protoimpl.MessageState `protogen:"open.v1"`
-	Limit  uint32                 `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
-	Offset uint32                 `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	Limit uint32                 `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Page  uint32                 `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
 	// time
 	StartTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	EndTime   *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
@@ -122,9 +122,9 @@ func (x *ListNewsRequest) GetLimit() uint32 {
 	return 0
 }
 
-func (x *ListNewsRequest) GetOffset() uint32 {
+func (x *ListNewsRequest) GetPage() uint32 {
 	if x != nil {
-		return x.Offset
+		return x.Page
 	}
 	return 0
 }
@@ -481,10 +481,10 @@ var File_news_proto protoreflect.FileDescriptor
 const file_news_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"news.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bbuf/validate/validate.proto\"\xa7\x02\n" +
+	"news.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bbuf/validate/validate.proto\"\xa3\x02\n" +
 	"\x0fListNewsRequest\x12\x1d\n" +
-	"\x05limit\x18\x01 \x01(\rB\a\xbaH\x04*\x02(\x01R\x05limit\x12\x1f\n" +
-	"\x06offset\x18\x02 \x01(\rB\a\xbaH\x04*\x02(\x00R\x06offset\x129\n" +
+	"\x05limit\x18\x01 \x01(\rB\a\xbaH\x04*\x02(\x01R\x05limit\x12\x1b\n" +
+	"\x04page\x18\x02 \x01(\rB\a\xbaH\x04*\x02(\x01R\x04page\x129\n" +
 	"\n" +
 	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
 	"\bend_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12\x1c\n" +

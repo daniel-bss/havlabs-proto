@@ -16,7 +16,7 @@ enum SortField {
 
 message ListNewsRequest {
     uint32 limit = 1 [ (buf.validate.field).uint32.gte = 1 ];
-    uint32 offset = 2 [ (buf.validate.field).uint32.gte = 0 ]; 
+    uint32 page = 2 [ (buf.validate.field).uint32.gte = 1 ]; 
 
     // optionals
 
