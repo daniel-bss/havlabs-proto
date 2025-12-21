@@ -364,6 +364,50 @@ func (x *OneMediaResponse) GetId() string {
 	return ""
 }
 
+type OneMediaURLResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Url           string                 `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OneMediaURLResponse) Reset() {
+	*x = OneMediaURLResponse{}
+	mi := &file_media_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OneMediaURLResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OneMediaURLResponse) ProtoMessage() {}
+
+func (x *OneMediaURLResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_media_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OneMediaURLResponse.ProtoReflect.Descriptor instead.
+func (*OneMediaURLResponse) Descriptor() ([]byte, []int) {
+	return file_media_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *OneMediaURLResponse) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
 var File_media_proto protoreflect.FileDescriptor
 
 const file_media_proto_rawDesc = "" +
@@ -385,7 +429,9 @@ const file_media_proto_rawDesc = "" +
 	"\x16GetOneMediaByIdRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"\"\n" +
 	"\x10OneMediaResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id*#\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"'\n" +
+	"\x13OneMediaURLResponse\x12\x10\n" +
+	"\x03url\x18\x01 \x01(\tR\x03url*#\n" +
 	"\n" +
 	"StatusEnum\x12\t\n" +
 	"\x05ready\x10\x00\x12\n" +
@@ -405,7 +451,7 @@ func file_media_proto_rawDescGZIP() []byte {
 }
 
 var file_media_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_media_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_media_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_media_proto_goTypes = []any{
 	(StatusEnum)(0),                     // 0: pb.StatusEnum
 	(*CreateUploadSessionRequest)(nil),  // 1: pb.CreateUploadSessionRequest
@@ -414,6 +460,7 @@ var file_media_proto_goTypes = []any{
 	(*ConfirmUploadResponse)(nil),       // 4: pb.ConfirmUploadResponse
 	(*GetOneMediaByIdRequest)(nil),      // 5: pb.GetOneMediaByIdRequest
 	(*OneMediaResponse)(nil),            // 6: pb.OneMediaResponse
+	(*OneMediaURLResponse)(nil),         // 7: pb.OneMediaURLResponse
 }
 var file_media_proto_depIdxs = []int32{
 	0, // 0: pb.ConfirmUploadResponse.status:type_name -> pb.StatusEnum
@@ -435,7 +482,7 @@ func file_media_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_media_proto_rawDesc), len(file_media_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

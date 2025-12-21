@@ -44,3 +44,7 @@ message GetOneMediaByIdRequest {
 message OneMediaResponse {
     string id = 1;
 }
+
+message OneMediaURLResponse {
+    string url = 1;
+}

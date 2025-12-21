@@ -22,6 +22,7 @@ const (
 	HavlabsMedia_CreateUploadSession_FullMethodName = "/pb.HavlabsMedia/CreateUploadSession"
 	HavlabsMedia_ConfirmUpload_FullMethodName       = "/pb.HavlabsMedia/ConfirmUpload"
 	HavlabsMedia_GetMediaById_FullMethodName        = "/pb.HavlabsMedia/GetMediaById"
+	HavlabsMedia_GetMediaURL_FullMethodName         = "/pb.HavlabsMedia/GetMediaURL"
 )
 
 // HavlabsMediaClient is the client API for HavlabsMedia service.
@@ -31,6 +32,7 @@ type HavlabsMediaClient interface {
 	CreateUploadSession(ctx context.Context, in *CreateUploadSessionRequest, opts ...grpc.CallOption) (*CreateUploadSessionResponse, error)
 	ConfirmUpload(ctx context.Context, in *ConfirmUploadRequest, opts ...grpc.CallOption) (*ConfirmUploadResponse, error)
 	GetMediaById(ctx context.Context, in *GetOneMediaByIdRequest, opts ...grpc.CallOption) (*OneMediaResponse, error)
+	GetMediaURL(ctx context.Context, in *GetOneMediaByIdRequest, opts ...grpc.CallOption) (*OneMediaURLResponse, error)
 }
 
 type havlabsMediaClient struct {
@@ -71,6 +73,16 @@ func (c *havlabsMediaClient) GetMediaById(ctx context.Context, in *GetOneMediaBy
 	return out, nil
 }
 
+func (c *havlabsMediaClient) GetMediaURL(ctx context.Context, in *GetOneMediaByIdRequest, opts ...grpc.CallOption) (*OneMediaURLResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(OneMediaURLResponse)
+	err := c.cc.Invoke(ctx, HavlabsMedia_GetMediaURL_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // HavlabsMediaServer is the server API for HavlabsMedia service.
 // All implementations must embed UnimplementedHavlabsMediaServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type HavlabsMediaServer interface {
 	CreateUploadSession(context.Context, *CreateUploadSessionRequest) (*CreateUploadSessionResponse, error)
 	ConfirmUpload(context.Context, *ConfirmUploadRequest) (*ConfirmUploadResponse, error)
 	GetMediaById(context.Context, *GetOneMediaByIdRequest) (*OneMediaResponse, error)
+	GetMediaURL(context.Context, *GetOneMediaByIdRequest) (*OneMediaURLResponse, error)
 	mustEmbedUnimplementedHavlabsMediaServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedHavlabsMediaServer) ConfirmUpload(context.Context, *ConfirmUp
 }
 func (UnimplementedHavlabsMediaServer) GetMediaById(context.Context, *GetOneMediaByIdRequest) (*OneMediaResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetMediaById not implemented")
+}
+func (UnimplementedHavlabsMediaServer) GetMediaURL(context.Context, *GetOneMediaByIdRequest) (*OneMediaURLResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetMediaURL not implemented")
 }
 func (UnimplementedHavlabsMediaServer) mustEmbedUnimplementedHavlabsMediaServer() {}
 func (UnimplementedHavlabsMediaServer) testEmbeddedByValue()                      {}
@@ -172,6 +188,24 @@ func _HavlabsMedia_GetMediaById_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _HavlabsMedia_GetMediaURL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOneMediaByIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HavlabsMediaServer).GetMediaURL(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HavlabsMedia_GetMediaURL_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HavlabsMediaServer).GetMediaURL(ctx, req.(*GetOneMediaByIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // HavlabsMedia_ServiceDesc is the grpc.ServiceDesc for HavlabsMedia service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +224,10 @@ var HavlabsMedia_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetMediaById",
 			Handler:    _HavlabsMedia_GetMediaById_Handler,
+		},
+		{
+			MethodName: "GetMediaURL",
+			Handler:    _HavlabsMedia_GetMediaURL_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

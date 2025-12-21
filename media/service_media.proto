@@ -28,4 +28,10 @@ service HavlabsMedia {
         };
     }
 
+    rpc GetMediaURL(GetOneMediaByIdRequest) returns (OneMediaURLResponse) {
+        option (google.api.http) = {
+            get: "/media/{id}/url"
+        };
+    }
+
 }
