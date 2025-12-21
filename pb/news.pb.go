@@ -23,6 +23,147 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type SortField int32
+
+const (
+	SortField_TITLE        SortField = 0
+	SortField_PUBLISHED_AT SortField = 1
+)
+
+// Enum value maps for SortField.
+var (
+	SortField_name = map[int32]string{
+		0: "TITLE",
+		1: "PUBLISHED_AT",
+	}
+	SortField_value = map[string]int32{
+		"TITLE":        0,
+		"PUBLISHED_AT": 1,
+	}
+)
+
+func (x SortField) Enum() *SortField {
+	p := new(SortField)
+	*p = x
+	return p
+}
+
+func (x SortField) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SortField) Descriptor() protoreflect.EnumDescriptor {
+	return file_news_proto_enumTypes[0].Descriptor()
+}
+
+func (SortField) Type() protoreflect.EnumType {
+	return &file_news_proto_enumTypes[0]
+}
+
+func (x SortField) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SortField.Descriptor instead.
+func (SortField) EnumDescriptor() ([]byte, []int) {
+	return file_news_proto_rawDescGZIP(), []int{0}
+}
+
+type ListNewsRequest struct {
+	state  protoimpl.MessageState `protogen:"open.v1"`
+	Limit  uint32                 `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Offset uint32                 `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
+	// time
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime   *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	// filter
+	Including string `protobuf:"bytes,5,opt,name=including,proto3" json:"including,omitempty"`
+	// sorting
+	SortBy        SortField `protobuf:"varint,6,opt,name=sort_by,json=sortBy,proto3,enum=pb.SortField" json:"sort_by,omitempty"`
+	Descending    bool      `protobuf:"varint,7,opt,name=descending,proto3" json:"descending,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListNewsRequest) Reset() {
+	*x = ListNewsRequest{}
+	mi := &file_news_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListNewsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListNewsRequest) ProtoMessage() {}
+
+func (x *ListNewsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_news_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListNewsRequest.ProtoReflect.Descriptor instead.
+func (*ListNewsRequest) Descriptor() ([]byte, []int) {
+	return file_news_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *ListNewsRequest) GetLimit() uint32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *ListNewsRequest) GetOffset() uint32 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+func (x *ListNewsRequest) GetStartTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartTime
+	}
+	return nil
+}
+
+func (x *ListNewsRequest) GetEndTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.EndTime
+	}
+	return nil
+}
+
+func (x *ListNewsRequest) GetIncluding() string {
+	if x != nil {
+		return x.Including
+	}
+	return ""
+}
+
+func (x *ListNewsRequest) GetSortBy() SortField {
+	if x != nil {
+		return x.SortBy
+	}
+	return SortField_TITLE
+}
+
+func (x *ListNewsRequest) GetDescending() bool {
+	if x != nil {
+		return x.Descending
+	}
+	return false
+}
+
 type GetOneNewsByIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -32,7 +173,7 @@ type GetOneNewsByIdRequest struct {
 
 func (x *GetOneNewsByIdRequest) Reset() {
 	*x = GetOneNewsByIdRequest{}
-	mi := &file_news_proto_msgTypes[0]
+	mi := &file_news_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -44,7 +185,7 @@ func (x *GetOneNewsByIdRequest) String() string {
 func (*GetOneNewsByIdRequest) ProtoMessage() {}
 
 func (x *GetOneNewsByIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_news_proto_msgTypes[0]
+	mi := &file_news_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +198,7 @@ func (x *GetOneNewsByIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOneNewsByIdRequest.ProtoReflect.Descriptor instead.
 func (*GetOneNewsByIdRequest) Descriptor() ([]byte, []int) {
-	return file_news_proto_rawDescGZIP(), []int{0}
+	return file_news_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GetOneNewsByIdRequest) GetId() string {
@@ -78,7 +219,7 @@ type CreateNewsRequest struct {
 
 func (x *CreateNewsRequest) Reset() {
 	*x = CreateNewsRequest{}
-	mi := &file_news_proto_msgTypes[1]
+	mi := &file_news_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -90,7 +231,7 @@ func (x *CreateNewsRequest) String() string {
 func (*CreateNewsRequest) ProtoMessage() {}
 
 func (x *CreateNewsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_news_proto_msgTypes[1]
+	mi := &file_news_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -103,7 +244,7 @@ func (x *CreateNewsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateNewsRequest.ProtoReflect.Descriptor instead.
 func (*CreateNewsRequest) Descriptor() ([]byte, []int) {
-	return file_news_proto_rawDescGZIP(), []int{1}
+	return file_news_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CreateNewsRequest) GetTitle() string {
@@ -137,7 +278,7 @@ type UpdateNewsByIdRequest struct {
 
 func (x *UpdateNewsByIdRequest) Reset() {
 	*x = UpdateNewsByIdRequest{}
-	mi := &file_news_proto_msgTypes[2]
+	mi := &file_news_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -149,7 +290,7 @@ func (x *UpdateNewsByIdRequest) String() string {
 func (*UpdateNewsByIdRequest) ProtoMessage() {}
 
 func (x *UpdateNewsByIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_news_proto_msgTypes[2]
+	mi := &file_news_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -162,7 +303,7 @@ func (x *UpdateNewsByIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateNewsByIdRequest.ProtoReflect.Descriptor instead.
 func (*UpdateNewsByIdRequest) Descriptor() ([]byte, []int) {
-	return file_news_proto_rawDescGZIP(), []int{2}
+	return file_news_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *UpdateNewsByIdRequest) GetTitle() string {
@@ -191,7 +332,7 @@ type OneNewsResponse struct {
 
 func (x *OneNewsResponse) Reset() {
 	*x = OneNewsResponse{}
-	mi := &file_news_proto_msgTypes[3]
+	mi := &file_news_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -203,7 +344,7 @@ func (x *OneNewsResponse) String() string {
 func (*OneNewsResponse) ProtoMessage() {}
 
 func (x *OneNewsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_news_proto_msgTypes[3]
+	mi := &file_news_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -216,7 +357,7 @@ func (x *OneNewsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OneNewsResponse.ProtoReflect.Descriptor instead.
 func (*OneNewsResponse) Descriptor() ([]byte, []int) {
-	return file_news_proto_rawDescGZIP(), []int{3}
+	return file_news_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *OneNewsResponse) GetTitle() string {
@@ -256,7 +397,7 @@ type ListNewsResponse struct {
 
 func (x *ListNewsResponse) Reset() {
 	*x = ListNewsResponse{}
-	mi := &file_news_proto_msgTypes[4]
+	mi := &file_news_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -268,7 +409,7 @@ func (x *ListNewsResponse) String() string {
 func (*ListNewsResponse) ProtoMessage() {}
 
 func (x *ListNewsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_news_proto_msgTypes[4]
+	mi := &file_news_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -281,7 +422,7 @@ func (x *ListNewsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListNewsResponse.ProtoReflect.Descriptor instead.
 func (*ListNewsResponse) Descriptor() ([]byte, []int) {
-	return file_news_proto_rawDescGZIP(), []int{4}
+	return file_news_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListNewsResponse) GetNews() []*OneNewsResponse {
@@ -300,7 +441,7 @@ type NewsIdResponse struct {
 
 func (x *NewsIdResponse) Reset() {
 	*x = NewsIdResponse{}
-	mi := &file_news_proto_msgTypes[5]
+	mi := &file_news_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -312,7 +453,7 @@ func (x *NewsIdResponse) String() string {
 func (*NewsIdResponse) ProtoMessage() {}
 
 func (x *NewsIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_news_proto_msgTypes[5]
+	mi := &file_news_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -325,7 +466,7 @@ func (x *NewsIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NewsIdResponse.ProtoReflect.Descriptor instead.
 func (*NewsIdResponse) Descriptor() ([]byte, []int) {
-	return file_news_proto_rawDescGZIP(), []int{5}
+	return file_news_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *NewsIdResponse) GetId() string {
@@ -340,7 +481,18 @@ var File_news_proto protoreflect.FileDescriptor
 const file_news_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"news.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bbuf/validate/validate.proto\"0\n" +
+	"news.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bbuf/validate/validate.proto\"\xa9\x02\n" +
+	"\x0fListNewsRequest\x12\x1d\n" +
+	"\x05limit\x18\x01 \x01(\rB\a\xbaH\x04*\x02(\x01R\x05limit\x12\x1f\n" +
+	"\x06offset\x18\x02 \x01(\rB\a\xbaH\x04*\x02(\x00R\x06offset\x129\n" +
+	"\n" +
+	"start_time\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
+	"\bend_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12\x1c\n" +
+	"\tincluding\x18\x05 \x01(\tR\tincluding\x12&\n" +
+	"\asort_by\x18\x06 \x01(\x0e2\r.pb.SortFieldR\x06sortBy\x12\x1e\n" +
+	"\n" +
+	"descending\x18\a \x01(\bR\n" +
+	"descending\"0\n" +
 	"\x15GetOneNewsByIdRequest\x12\x17\n" +
 	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"y\n" +
 	"\x11CreateNewsRequest\x12\x1d\n" +
@@ -358,7 +510,10 @@ const file_news_proto_rawDesc = "" +
 	"\x10ListNewsResponse\x12'\n" +
 	"\x04news\x18\x01 \x03(\v2\x13.pb.OneNewsResponseR\x04news\" \n" +
 	"\x0eNewsIdResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02idB-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
+	"\x02id\x18\x01 \x01(\tR\x02id*(\n" +
+	"\tSortField\x12\t\n" +
+	"\x05TITLE\x10\x00\x12\x10\n" +
+	"\fPUBLISHED_AT\x10\x01B-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
 
 var (
 	file_news_proto_rawDescOnce sync.Once
@@ -372,24 +527,30 @@ func file_news_proto_rawDescGZIP() []byte {
 	return file_news_proto_rawDescData
 }
 
-var file_news_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_news_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_news_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_news_proto_goTypes = []any{
-	(*GetOneNewsByIdRequest)(nil), // 0: pb.GetOneNewsByIdRequest
-	(*CreateNewsRequest)(nil),     // 1: pb.CreateNewsRequest
-	(*UpdateNewsByIdRequest)(nil), // 2: pb.UpdateNewsByIdRequest
-	(*OneNewsResponse)(nil),       // 3: pb.OneNewsResponse
-	(*ListNewsResponse)(nil),      // 4: pb.ListNewsResponse
-	(*NewsIdResponse)(nil),        // 5: pb.NewsIdResponse
-	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
+	(SortField)(0),                // 0: pb.SortField
+	(*ListNewsRequest)(nil),       // 1: pb.ListNewsRequest
+	(*GetOneNewsByIdRequest)(nil), // 2: pb.GetOneNewsByIdRequest
+	(*CreateNewsRequest)(nil),     // 3: pb.CreateNewsRequest
+	(*UpdateNewsByIdRequest)(nil), // 4: pb.UpdateNewsByIdRequest
+	(*OneNewsResponse)(nil),       // 5: pb.OneNewsResponse
+	(*ListNewsResponse)(nil),      // 6: pb.ListNewsResponse
+	(*NewsIdResponse)(nil),        // 7: pb.NewsIdResponse
+	(*timestamppb.Timestamp)(nil), // 8: google.protobuf.Timestamp
 }
 var file_news_proto_depIdxs = []int32{
-	6, // 0: pb.OneNewsResponse.published_at:type_name -> google.protobuf.Timestamp
-	3, // 1: pb.ListNewsResponse.news:type_name -> pb.OneNewsResponse
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	8, // 0: pb.ListNewsRequest.start_time:type_name -> google.protobuf.Timestamp
+	8, // 1: pb.ListNewsRequest.end_time:type_name -> google.protobuf.Timestamp
+	0, // 2: pb.ListNewsRequest.sort_by:type_name -> pb.SortField
+	8, // 3: pb.OneNewsResponse.published_at:type_name -> google.protobuf.Timestamp
+	5, // 4: pb.ListNewsResponse.news:type_name -> pb.OneNewsResponse
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_news_proto_init() }
@@ -402,13 +563,14 @@ func file_news_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_news_proto_rawDesc), len(file_news_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   6,
+			NumEnums:      1,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_news_proto_goTypes,
 		DependencyIndexes: file_news_proto_depIdxs,
+		EnumInfos:         file_news_proto_enumTypes,
 		MessageInfos:      file_news_proto_msgTypes,
 	}.Build()
 	File_news_proto = out.File

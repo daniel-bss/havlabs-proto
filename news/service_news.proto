@@ -3,14 +3,13 @@ syntax = "proto3";
 package pb;
 
 import "google/api/annotations.proto";
-import "google/protobuf/empty.proto";
 import "news.proto";
 
 option go_package = "github.com/daniel-bss/havlabs-proto/news/pb";
 
 service HavlabsNews {
 
-    rpc GetAllNews(google.protobuf.Empty) returns (ListNewsResponse) {
+    rpc GetPaginatedNews(ListNewsRequest) returns (ListNewsResponse) {
         option (google.api.http) = {
             get: "/news"
         };

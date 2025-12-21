@@ -11,7 +11,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -20,18 +19,18 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	HavlabsNews_GetAllNews_FullMethodName = "/pb.HavlabsNews/GetAllNews"
-	HavlabsNews_GetOneNews_FullMethodName = "/pb.HavlabsNews/GetOneNews"
-	HavlabsNews_CreateNews_FullMethodName = "/pb.HavlabsNews/CreateNews"
-	HavlabsNews_UpdateNews_FullMethodName = "/pb.HavlabsNews/UpdateNews"
-	HavlabsNews_DeleteNews_FullMethodName = "/pb.HavlabsNews/DeleteNews"
+	HavlabsNews_GetPaginatedNews_FullMethodName = "/pb.HavlabsNews/GetPaginatedNews"
+	HavlabsNews_GetOneNews_FullMethodName       = "/pb.HavlabsNews/GetOneNews"
+	HavlabsNews_CreateNews_FullMethodName       = "/pb.HavlabsNews/CreateNews"
+	HavlabsNews_UpdateNews_FullMethodName       = "/pb.HavlabsNews/UpdateNews"
+	HavlabsNews_DeleteNews_FullMethodName       = "/pb.HavlabsNews/DeleteNews"
 )
 
 // HavlabsNewsClient is the client API for HavlabsNews service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type HavlabsNewsClient interface {
-	GetAllNews(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListNewsResponse, error)
+	GetPaginatedNews(ctx context.Context, in *ListNewsRequest, opts ...grpc.CallOption) (*ListNewsResponse, error)
 	GetOneNews(ctx context.Context, in *GetOneNewsByIdRequest, opts ...grpc.CallOption) (*OneNewsResponse, error)
 	CreateNews(ctx context.Context, in *CreateNewsRequest, opts ...grpc.CallOption) (*NewsIdResponse, error)
 	UpdateNews(ctx context.Context, in *UpdateNewsByIdRequest, opts ...grpc.CallOption) (*NewsIdResponse, error)
@@ -46,10 +45,10 @@ func NewHavlabsNewsClient(cc grpc.ClientConnInterface) HavlabsNewsClient {
 	return &havlabsNewsClient{cc}
 }
 
-func (c *havlabsNewsClient) GetAllNews(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ListNewsResponse, error) {
+func (c *havlabsNewsClient) GetPaginatedNews(ctx context.Context, in *ListNewsRequest, opts ...grpc.CallOption) (*ListNewsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListNewsResponse)
-	err := c.cc.Invoke(ctx, HavlabsNews_GetAllNews_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, HavlabsNews_GetPaginatedNews_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,7 +99,7 @@ func (c *havlabsNewsClient) DeleteNews(ctx context.Context, in *GetOneNewsByIdRe
 // All implementations must embed UnimplementedHavlabsNewsServer
 // for forward compatibility.
 type HavlabsNewsServer interface {
-	GetAllNews(context.Context, *emptypb.Empty) (*ListNewsResponse, error)
+	GetPaginatedNews(context.Context, *ListNewsRequest) (*ListNewsResponse, error)
 	GetOneNews(context.Context, *GetOneNewsByIdRequest) (*OneNewsResponse, error)
 	CreateNews(context.Context, *CreateNewsRequest) (*NewsIdResponse, error)
 	UpdateNews(context.Context, *UpdateNewsByIdRequest) (*NewsIdResponse, error)
@@ -115,8 +114,8 @@ type HavlabsNewsServer interface {
 // pointer dereference when methods are called.
 type UnimplementedHavlabsNewsServer struct{}
 
-func (UnimplementedHavlabsNewsServer) GetAllNews(context.Context, *emptypb.Empty) (*ListNewsResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetAllNews not implemented")
+func (UnimplementedHavlabsNewsServer) GetPaginatedNews(context.Context, *ListNewsRequest) (*ListNewsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetPaginatedNews not implemented")
 }
 func (UnimplementedHavlabsNewsServer) GetOneNews(context.Context, *GetOneNewsByIdRequest) (*OneNewsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetOneNews not implemented")
@@ -151,20 +150,20 @@ func RegisterHavlabsNewsServer(s grpc.ServiceRegistrar, srv HavlabsNewsServer) {
 	s.RegisterService(&HavlabsNews_ServiceDesc, srv)
 }
 
-func _HavlabsNews_GetAllNews_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
+func _HavlabsNews_GetPaginatedNews_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListNewsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(HavlabsNewsServer).GetAllNews(ctx, in)
+		return srv.(HavlabsNewsServer).GetPaginatedNews(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: HavlabsNews_GetAllNews_FullMethodName,
+		FullMethod: HavlabsNews_GetPaginatedNews_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HavlabsNewsServer).GetAllNews(ctx, req.(*emptypb.Empty))
+		return srv.(HavlabsNewsServer).GetPaginatedNews(ctx, req.(*ListNewsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -249,8 +248,8 @@ var HavlabsNews_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*HavlabsNewsServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetAllNews",
-			Handler:    _HavlabsNews_GetAllNews_Handler,
+			MethodName: "GetPaginatedNews",
+			Handler:    _HavlabsNews_GetPaginatedNews_Handler,
 		},
 		{
 			MethodName: "GetOneNews",

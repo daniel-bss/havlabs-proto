@@ -7,7 +7,30 @@ import "buf/validate/validate.proto";
 
 option go_package = "github.com/daniel-bss/havlabs-proto/news/pb";
 
+enum SortField {
+    TITLE = 0;
+    PUBLISHED_AT = 1;
+}
+
 // REQUESTS
+
+message ListNewsRequest {
+    uint32 limit = 1 [ (buf.validate.field).uint32.gte = 1 ];
+    uint32 offset = 2 [ (buf.validate.field).uint32.gte = 0 ]; 
+
+    // optionals
+
+    // time
+    google.protobuf.Timestamp start_time = 3; 
+    google.protobuf.Timestamp end_time = 4; 
+
+    // filter
+    string including = 5;
+
+    // sorting
+    SortField sort_by = 6;
+    bool descending = 7;
+}
 
 message GetOneNewsByIdRequest {
     string id = 1 [ (buf.validate.field).string.min_len = 1 ];

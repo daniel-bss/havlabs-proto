@@ -10,7 +10,6 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -26,11 +25,10 @@ var File_service_news_proto protoreflect.FileDescriptor
 
 const file_service_news_proto_rawDesc = "" +
 	"\n" +
-	"\x12service_news.proto\x12\x02pb\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\n" +
-	"news.proto2\x96\x03\n" +
-	"\vHavlabsNews\x12I\n" +
-	"\n" +
-	"GetAllNews\x12\x16.google.protobuf.Empty\x1a\x14.pb.ListNewsResponse\"\r\x82\xd3\xe4\x93\x02\a\x12\x05/news\x12S\n" +
+	"\x12service_news.proto\x12\x02pb\x1a\x1cgoogle/api/annotations.proto\x1a\n" +
+	"news.proto2\x99\x03\n" +
+	"\vHavlabsNews\x12L\n" +
+	"\x10GetPaginatedNews\x12\x13.pb.ListNewsRequest\x1a\x14.pb.ListNewsResponse\"\r\x82\xd3\xe4\x93\x02\a\x12\x05/news\x12S\n" +
 	"\n" +
 	"GetOneNews\x12\x19.pb.GetOneNewsByIdRequest\x1a\x13.pb.OneNewsResponse\"\x15\x82\xd3\xe4\x93\x02\x0f:\x01*\x12\n" +
 	"/news/{id}\x12I\n" +
@@ -45,7 +43,7 @@ const file_service_news_proto_rawDesc = "" +
 	":\x01**\x05/newsB-Z+github.com/daniel-bss/havlabs-proto/news/pbb\x06proto3"
 
 var file_service_news_proto_goTypes = []any{
-	(*emptypb.Empty)(nil),         // 0: google.protobuf.Empty
+	(*ListNewsRequest)(nil),       // 0: pb.ListNewsRequest
 	(*GetOneNewsByIdRequest)(nil), // 1: pb.GetOneNewsByIdRequest
 	(*CreateNewsRequest)(nil),     // 2: pb.CreateNewsRequest
 	(*UpdateNewsByIdRequest)(nil), // 3: pb.UpdateNewsByIdRequest
@@ -54,12 +52,12 @@ var file_service_news_proto_goTypes = []any{
 	(*NewsIdResponse)(nil),        // 6: pb.NewsIdResponse
 }
 var file_service_news_proto_depIdxs = []int32{
-	0, // 0: pb.HavlabsNews.GetAllNews:input_type -> google.protobuf.Empty
+	0, // 0: pb.HavlabsNews.GetPaginatedNews:input_type -> pb.ListNewsRequest
 	1, // 1: pb.HavlabsNews.GetOneNews:input_type -> pb.GetOneNewsByIdRequest
 	2, // 2: pb.HavlabsNews.CreateNews:input_type -> pb.CreateNewsRequest
 	3, // 3: pb.HavlabsNews.UpdateNews:input_type -> pb.UpdateNewsByIdRequest
 	1, // 4: pb.HavlabsNews.DeleteNews:input_type -> pb.GetOneNewsByIdRequest
-	4, // 5: pb.HavlabsNews.GetAllNews:output_type -> pb.ListNewsResponse
+	4, // 5: pb.HavlabsNews.GetPaginatedNews:output_type -> pb.ListNewsResponse
 	5, // 6: pb.HavlabsNews.GetOneNews:output_type -> pb.OneNewsResponse
 	6, // 7: pb.HavlabsNews.CreateNews:output_type -> pb.NewsIdResponse
 	6, // 8: pb.HavlabsNews.UpdateNews:output_type -> pb.NewsIdResponse
