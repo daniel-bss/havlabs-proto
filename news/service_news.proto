@@ -11,13 +11,13 @@ service HavlabsNews {
 
     rpc GetPaginatedNews(ListNewsRequest) returns (ListNewsResponse) {
         option (google.api.http) = {
-            get: "/news"
+            post: "/list-news"
         };
     }
 
     rpc GetOneNews(GetOneNewsByIdRequest) returns (OneNewsResponse) {
         option (google.api.http) = {
-            get: "/news/{id}"
+            post: "/news/{id}"
             body: "*"
         };
     }

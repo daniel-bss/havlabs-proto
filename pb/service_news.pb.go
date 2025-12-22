@@ -26,11 +26,12 @@ var File_service_news_proto protoreflect.FileDescriptor
 const file_service_news_proto_rawDesc = "" +
 	"\n" +
 	"\x12service_news.proto\x12\x02pb\x1a\x1cgoogle/api/annotations.proto\x1a\n" +
-	"news.proto2\x99\x03\n" +
-	"\vHavlabsNews\x12L\n" +
-	"\x10GetPaginatedNews\x12\x13.pb.ListNewsRequest\x1a\x14.pb.ListNewsResponse\"\r\x82\xd3\xe4\x93\x02\a\x12\x05/news\x12S\n" +
+	"news.proto2\x9e\x03\n" +
+	"\vHavlabsNews\x12Q\n" +
+	"\x10GetPaginatedNews\x12\x13.pb.ListNewsRequest\x1a\x14.pb.ListNewsResponse\"\x12\x82\xd3\xe4\x93\x02\f\"\n" +
+	"/list-news\x12S\n" +
 	"\n" +
-	"GetOneNews\x12\x19.pb.GetOneNewsByIdRequest\x1a\x13.pb.OneNewsResponse\"\x15\x82\xd3\xe4\x93\x02\x0f:\x01*\x12\n" +
+	"GetOneNews\x12\x19.pb.GetOneNewsByIdRequest\x1a\x13.pb.OneNewsResponse\"\x15\x82\xd3\xe4\x93\x02\x0f:\x01*\"\n" +
 	"/news/{id}\x12I\n" +
 	"\n" +
 	"CreateNews\x12\x15.pb.CreateNewsRequest\x1a\x12.pb.NewsIdResponse\"\x10\x82\xd3\xe4\x93\x02\n" +
