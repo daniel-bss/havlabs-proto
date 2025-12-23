@@ -322,10 +322,11 @@ func (x *UpdateNewsByIdRequest) GetContent() string {
 
 type OneNewsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
-	Content       string                 `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
-	ImageUrl      string                 `protobuf:"bytes,3,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
-	PublishedAt   *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Content       string                 `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
+	ImageUrl      string                 `protobuf:"bytes,4,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
+	PublishedAt   *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=published_at,json=publishedAt,proto3" json:"published_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -358,6 +359,13 @@ func (x *OneNewsResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use OneNewsResponse.ProtoReflect.Descriptor instead.
 func (*OneNewsResponse) Descriptor() ([]byte, []int) {
 	return file_news_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *OneNewsResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 func (x *OneNewsResponse) GetTitle() string {
@@ -507,12 +515,13 @@ const file_news_proto_rawDesc = "" +
 	"\bmedia_id\x18\x03 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\amediaId\"Y\n" +
 	"\x15UpdateNewsByIdRequest\x12\x1d\n" +
 	"\x05title\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x05title\x12!\n" +
-	"\acontent\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\acontent\"\x9d\x01\n" +
-	"\x0fOneNewsResponse\x12\x14\n" +
-	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
-	"\acontent\x18\x02 \x01(\tR\acontent\x12\x1b\n" +
-	"\timage_url\x18\x03 \x01(\tR\bimageUrl\x12=\n" +
-	"\fpublished_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vpublishedAt\"\\\n" +
+	"\acontent\x18\x02 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\acontent\"\xad\x01\n" +
+	"\x0fOneNewsResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12\x18\n" +
+	"\acontent\x18\x03 \x01(\tR\acontent\x12\x1b\n" +
+	"\timage_url\x18\x04 \x01(\tR\bimageUrl\x12=\n" +
+	"\fpublished_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\vpublishedAt\"\\\n" +
 	"\x10ListNewsResponse\x12'\n" +
 	"\x04news\x18\x01 \x03(\v2\x13.pb.OneNewsResponseR\x04news\x12\x1f\n" +
 	"\vtotal_pages\x18\x02 \x01(\rR\n" +
